@@ -1,5 +1,8 @@
-SpecialEffects.ScratchMosaic = function(el, msg, font, color, subMsg, subFont, cubColor, bgColor, fwColor) {
-  
+if (typeof specialEffects === 'undefined' || !specialEffects) {
+  specialEffects = {};
+}
+
+specialEffects.ScratchMosaic = function(el, msg, font, color, subMsg, subFont, cubColor, bgColor, fwColor) {
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "absolute";
   cnv_bg.style.left = "0";
@@ -54,7 +57,7 @@ SpecialEffects.ScratchMosaic = function(el, msg, font, color, subMsg, subFont, c
   requestAnimationFrame(this.ScratchMosaic.frame);
 };
   
-SpecialEffects.ScratchMosaic.frame = function() {
+specialEffects.ScratchMosaic.frame = function() {
   var w = this.ScratchMosaic.w;
   var h = this.ScratchMosaic.h;
   var ctx_bg = this.ScratchMosaic.ctx_bg;
