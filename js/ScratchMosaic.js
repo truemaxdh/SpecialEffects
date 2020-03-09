@@ -17,8 +17,8 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   cnv_fw.style.position = "absolute";
   cnv_fw.style.left = el.style.left + "px";
   cnv_fw.style.top = el.style.top + "px";
-  cnv_fw.style.width = el.style.width + "px";
-  cnv_fw.style.heght = el.style.height + "px";
+  cnv_fw.style.width = "100%";
+  cnv_fw.style.heght = "100%";
   cnv_fw.id = "cnv_fw";
   el.appendChild(cnv_fw);
 
