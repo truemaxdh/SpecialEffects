@@ -55,10 +55,10 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   this.scratchMosaic.ctx_fw = ctx_fw;
 
   console.log(this);
-  requestAnimationFrame(this.scratchMosaic.frame);
+  requestAnimationFrame(this.scratchMosaic.drawFrm);
 };
   
-specialEffects.scratchMosaic.frame = function() {
+specialEffects.scratchMosaic.drawFrm = function() {
   console.log(this);
   var w = specialEffects.scratchMosaic.w;
   var h = specialEffects.scratchMosaic.h;
@@ -74,7 +74,7 @@ specialEffects.scratchMosaic.frame = function() {
     ctx_fw.fillRect(x,y,20,1);	
   }
 
-  requestAnimationFrame(this.scratchMosaic.frame);
+  requestAnimationFrame(specialEffects.scratchMosaic.drawFrm);
 }
 
     
