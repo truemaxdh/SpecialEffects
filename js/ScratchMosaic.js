@@ -60,10 +60,10 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   
 specialEffects.scratchMosaic.frame = function() {
   console.log(this);
-  var w = this.scratchMosaic.w;
-  var h = this.scratchMosaic.h;
-  var ctx_bg = this.scratchMosaic.ctx_bg;
-  var ctx_fw = this.scratchMosaic.ctx_fw;
+  var w = specialEffects.scratchMosaic.w;
+  var h = specialEffects.scratchMosaic.h;
+  var ctx_bg = specialEffects.scratchMosaic.ctx_bg;
+  var ctx_fw = specialEffects.scratchMosaic.ctx_fw;
 
   for (var i = 0; i < 10; i++) {
     var x = Math.random() * (w - 20);
