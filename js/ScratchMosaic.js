@@ -3,13 +3,13 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 }
 
 specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, subColor, bgColor, fwColor) {
-  console.log(el);
+  console.log(el.style);
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "absolute";
-  cnv_bg.style.left = el.style.left + "px";
-  cnv_bg.style.top = el.style.top + "px";
-  cnv_bg.style.width = el.style.width + "px";
-  cnv_bg.style.heght = el.style.height + "px";
+  cnv_bg.style.left = el.style.left;
+  cnv_bg.style.top = el.style.top;
+  cnv_bg.style.width = el.style.width;
+  cnv_bg.style.heght = el.style.height;
   cnv_bg.id = "cnv_bg";
   el.appendChild(cnv_bg);
 
