@@ -9,16 +9,16 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   cnv_bg.style.left = el.style.left;
   cnv_bg.style.top = el.style.top;
   cnv_bg.style.width = el.style.width;
-  cnv_bg.style.heght = el.style.height;
+  cnv_bg.style.height = el.style.height;
   cnv_bg.id = "cnv_bg";
   el.appendChild(cnv_bg);
 
   var cnv_fw = document.createElement("CANVAS");
   cnv_fw.style.position = "absolute";
-  cnv_fw.style.left = el.style.left + "px";
-  cnv_fw.style.top = el.style.top + "px";
-  cnv_fw.style.width = "100%";
-  cnv_fw.style.heght = "100%";
+  cnv_fw.style.left = el.style.left;
+  cnv_fw.style.top = el.style.top;
+  cnv_fw.style.width = el.style.width;
+  cnv_fw.style.heght = el.style.height;
   cnv_fw.id = "cnv_fw";
   el.appendChild(cnv_fw);
 
