@@ -6,8 +6,8 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   console.log(el.style);
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
-  cnv_bg.style.left = el.style.left;
-  cnv_bg.style.top = el.style.top;
+  //cnv_bg.style.left = el.style.left;
+  //cnv_bg.style.top = el.style.top;
   cnv_bg.style.width = el.style.width;
   cnv_bg.style.height = el.style.height;
   cnv_bg.id = "cnv_bg";
@@ -15,8 +15,8 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
 
   var cnv_fw = document.createElement("CANVAS");
   cnv_fw.style.position = "relative";
-  cnv_fw.style.left = el.style.left;
-  cnv_fw.style.top = el.style.top;
+  //cnv_fw.style.left = el.style.left;
+  cnv_fw.style.top = "-" + el.style.height;
   cnv_fw.style.width = el.style.width;
   cnv_fw.style.height = el.style.height;
   cnv_fw.id = "cnv_fw";
