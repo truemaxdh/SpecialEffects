@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="https://truemaxdh.github.io/Style/skin.css">
     
     <script src="js/ScratchMosaic.js"></script>
+    <script src="js/LighterOverlay.js"></script>
     <script>
       function demo_scratchMosaic() {
         var el = document.getElementById("board");
         el.innerHTML = "":
-	  specialEffects.scratchMosaic(
+        specialEffects.scratchMosaic(
           el,
           "Special Effects Sample",
           "20px Arial",
@@ -37,9 +38,9 @@
       }
       
       function demo_lighterOverlay() {
-      	  var el = document.getElementById("board");
+        var el = document.getElementById("board");
         el.innerHTML = "":
-	  specialEffects.lighterOverlay(el, 50, "black");
+        specialEffects.lighterOverlay(el, 50, "black");
       }
       
       window.onload = function() {
@@ -48,7 +49,7 @@
     </script>
 
   </head>
-  <body>
+  <body>  
     <script>var cookieBread = ">Arts>SpecialEffects";</script>
     <script src="https://truemaxdh.github.io/Include/header.js"></script>
 
