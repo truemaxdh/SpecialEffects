@@ -20,9 +20,11 @@
     
     <script src="js/ScratchMosaic.js"></script>
     <script>
-      window.onload = function() {
-        specialEffects.scratchMosaic(
-          document.getElementById("board"),
+      function demo_scratchMosaic() {
+        var el = document.getElementById("board");
+        el.innerHTML = "":
+	  specialEffects.scratchMosaic(
+          el,
           "Special Effects Sample",
           "20px Arial",
           "darkorange",
@@ -33,6 +35,16 @@
           "lightskyblue"
         );
       }
+      
+      function demo_lighterOverlay() {
+      	  var el = document.getElementById("board");
+        el.innerHTML = "":
+	  specialEffects.lighterOverlay(el, 50, "black");
+      }
+      
+      window.onload = function() {
+        demo_scratchMosaic();
+      }
     </script>
 
   </head>
@@ -40,9 +52,11 @@
     <script>var cookieBread = ">Arts>SpecialEffects";</script>
     <script src="https://truemaxdh.github.io/Include/header.js"></script>
 
-	  <center>
+    <center>
       {{content}}
       <br>
+      <a href="javascript:demo_scratchMosaic();">demo_scratchMosaic</a>
+      <a href="javascript:demo_lighterOverlay();">demo_lighterOverlay</a>
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
       <a class="normalBtn" href="https://github.com/truemaxdh/WaysToDrawTree">GitHub</a>
@@ -60,5 +74,5 @@
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-	</body>
+  </body>
 </html>
