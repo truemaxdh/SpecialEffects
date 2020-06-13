@@ -44,6 +44,6 @@ specialEffects.lighterOverlay.drawFrm = function() {
   ctx_bg.arc(cx, cy, r, 0, 2 * Math.PI);
   ctx_bg.fill();	
 
-  if (--this.lighterOverlay.shapeCnt > 0)
+  if (--specialEffects.lighterOverlay.shapeCnt > 0)
     requestAnimationFrame(specialEffects.lighterOverlay.drawFrm);
 }
