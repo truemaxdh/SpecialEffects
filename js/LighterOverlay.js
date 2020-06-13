@@ -36,7 +36,7 @@ specialEffects.lighterOverlay.drawFrm = function() {
 
   var cx = Math.random() * w;
   var cy = Math.random() * h;
-  var r = Math.random() * ((w > h) ? (h / 10) : (w / 10));
+  var r = Math.random() * ((w > h) ? (h / 7) : (w / 7));
   var rgb = "rgba(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
 
   ctx_bg.globalCompositeOperation = 'lighter';
@@ -46,5 +46,5 @@ specialEffects.lighterOverlay.drawFrm = function() {
   ctx_bg.fill();	
 
   if (--specialEffects.lighterOverlay.shapeCnt > 0)
-    setTimeout(specialEffects.lighterOverlay.drawFrm, 500);
+    setTimeout(specialEffects.lighterOverlay.drawFrm, 300);
 }
