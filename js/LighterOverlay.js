@@ -36,7 +36,7 @@ specialEffects.lighterOverlay.drawFrm = function() {
 
   var cx = Math.random() * w;
   var cy = Math.random() * h;
-  var r = Math.random() * (w > h) ? (h / 10) : (w / 10);
+  var r = Math.random() * ((w > h) ? (h / 10) : (w / 10));
   var rgb = "rgba(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
 
   ctx_bg.globalCompositeOperation = 'lighter';
