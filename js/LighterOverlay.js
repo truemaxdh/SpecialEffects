@@ -46,5 +46,5 @@ specialEffects.lighterOverlay.drawFrm = function() {
   ctx_bg.fill();	
 
   if (--specialEffects.lighterOverlay.shapeCnt > 0)
-    setTimeout(specialEffects.lighterOverlay.drawFrm, 300);
+    setTimeout(specialEffects.lighterOverlay.drawFrm, 250);
 }
