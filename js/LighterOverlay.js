@@ -41,7 +41,7 @@ specialEffects.lighterOverlay.drawFrm = function() {
 
   ctx_bg.globalCompositeOperation = 'lighter';
   ctx_bg.fillStyle = rgb;
-  ctx_bg.arc(cx, cy, y, 0, 2 * Math.PI);
+  ctx_bg.arc(cx, cy, r, 0, 2 * Math.PI);
   ctx_bg.fill();	
 
   if (--this.lighterOverlay.shapeCnt > 0)
