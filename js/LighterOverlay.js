@@ -40,6 +40,7 @@ specialEffects.lighterOverlay.drawFrm = function() {
   var rgb = "rgba(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
 
   ctx_bg.globalCompositeOperation = 'lighter';
+  ctx_bg.beginPath();
   ctx_bg.fillStyle = rgb;
   ctx_bg.arc(cx, cy, r, 0, 2 * Math.PI);
   ctx_bg.fill();	
