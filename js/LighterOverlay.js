@@ -26,7 +26,7 @@ specialEffects.lighterOverlay = function(el, shapeCnt, bgColor) {
   this.lighterOverlay.shapeCnt = shapeCnt;
   this.lighterOverlay.ctx_bg = ctx_bg;
 
-  requestAnimationFrame(this.lighterOverlay.drawFrm);
+  this.lighterOverlay.drawFrm();
 };
   
 specialEffects.lighterOverlay.drawFrm = function() {
@@ -46,5 +46,5 @@ specialEffects.lighterOverlay.drawFrm = function() {
   ctx_bg.fill();	
 
   if (--specialEffects.lighterOverlay.shapeCnt > 0)
-    requestAnimationFrame(specialEffects.lighterOverlay.drawFrm);
+    setTimeout(specialEffects.lighterOverlay.drawFrm, 500);
 }
