@@ -20,6 +20,7 @@
     
     <script src="js/ScratchMosaic.js"></script>
     <script src="js/LighterOverlay.js"></script>
+    <script src="js/Afterimage.js"></script>
     <script>
       function demo_scratchMosaic() {
         var el = document.getElementById("board");
@@ -43,6 +44,12 @@
         specialEffects.lighterOverlay(el, 200, "black");
       }
       
+      function demo_afterimage() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.afterimage(el);
+      }
+      
       window.onload = function() {
         demo_scratchMosaic();
       }
@@ -58,6 +65,7 @@
       <br>
       <a href="javascript:demo_scratchMosaic();">demo_scratchMosaic</a>
       <a href="javascript:demo_lighterOverlay();">demo_lighterOverlay</a>
+      <a href="javascript:demo_afterimage();">demo_afterimage</a>
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
       <a class="normalBtn" href="https://github.com/truemaxdh/WaysToDrawTree">GitHub</a>
