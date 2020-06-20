@@ -52,5 +52,5 @@ specialEffects.afterimage.drawFrm = function() {
     obj.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")"; 
   }
   
-  setTimeout(specialEffects.lighterOverlay.drawFrm, 250);
+  setTimeout(specialEffects.afterimage.drawFrm, 250);
 }
