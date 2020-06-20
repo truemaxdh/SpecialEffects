@@ -34,7 +34,7 @@ specialEffects.afterimage.drawFrm = function() {
   // ---------
   // bg canvas
   // ---------
-  ctx_bg.fillStyle = "rgba(0, 0, 0, 0.5)";
+  ctx_bg.fillStyle = "rgba(0, 0, 0, 0.2)";
   ctx_bg.fillRect(0, 0, obj.w, obj.h);
 
   ctx_bg.beginPath();
@@ -42,7 +42,7 @@ specialEffects.afterimage.drawFrm = function() {
   ctx_bg.arc(obj.cx, obj.cy, obj.r, 0, 2 * Math.PI);
   ctx_bg.fill();
   
-  obj.cx += 10;
+  obj.cx++;
   
   if (obj.cx > obj.w) {
     obj.cx = 0;
@@ -51,5 +51,5 @@ specialEffects.afterimage.drawFrm = function() {
     obj.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")"; 
   }
   
-  setTimeout(specialEffects.afterimage.drawFrm, 250);
+  requestAnimationFrame(specialEffects.afterimage.drawFrm);
 }
