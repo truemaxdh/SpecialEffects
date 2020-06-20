@@ -31,11 +31,10 @@ specialEffects.afterimage.drawFrm = function() {
   var obj = specialEffects.afterimage;
   var ctx_bg = obj.ctx_bg;
 
-  ctx_bg.globalCompositeOperation = 'lighter';
   // ---------
   // bg canvas
   // ---------
-  ctx_bg.fillStyle = "black";
+  ctx_bg.fillStyle = "rgba(0, 0, 0, 0.5)";
   ctx_bg.fillRect(0, 0, obj.w, obj.h);
 
   ctx_bg.beginPath();
