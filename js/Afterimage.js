@@ -37,6 +37,7 @@ specialEffects.afterimage.drawFrm = function() {
   ctx_bg.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx_bg.fillRect(0, 0, obj.w, obj.h);
 
+  ctx_bg.globalCompositeOperation = 'lighter';
   ctx_bg.beginPath();
   ctx_bg.fillStyle = obj.rgb;
   ctx_bg.arc(obj.cx, obj.cy, obj.r, 0, 2 * Math.PI);
