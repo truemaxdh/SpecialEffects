@@ -34,7 +34,7 @@ specialEffects.afterimage.drawFrm = function() {
   // ---------
   // bg canvas
   // ---------
-  ctx_bg.fillStyle = "rgba(0, 0, 0, 0.2)";
+  ctx_bg.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx_bg.fillRect(0, 0, obj.w, obj.h);
 
   ctx_bg.beginPath();
