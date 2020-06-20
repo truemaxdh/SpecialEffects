@@ -2,7 +2,7 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects = {};
 }
 
-specialEffects.afterimage = function(el, color) {
+specialEffects.afterimage = function(el) {
   console.log(el.style);
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
