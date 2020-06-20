@@ -24,6 +24,7 @@ specialEffects.afterimage = function(el) {
   this.afterimage.r = Math.random() * ((w > h) ? (h / 7) : (w / 7));
   this.afterimage.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")"; 
   this.afterimage.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
+  this.afterimage.speed = Math.random() * w / 20 + 1;
   
   this.afterimage.drawFrm();
 };
@@ -45,7 +46,7 @@ specialEffects.afterimage.drawFrm = function() {
   ctx_bg.arc(obj.cx, obj.cy, obj.r, 0, 2 * Math.PI);
   ctx_bg.fill();
   
-  obj.cx++;
+  obj.cx += obj.speed;
   
   if (obj.cx > obj.w) {
     obj.cx = 0;
@@ -53,6 +54,7 @@ specialEffects.afterimage.drawFrm = function() {
     obj.r = Math.random() * ((obj.w > obj.h) ? (obj.h / 7) : (obj.w / 7));
     obj.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
     obj.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
+    obj.speed = Math.random() * obj.w / 20 + 1;
   }
   
   requestAnimationFrame(specialEffects.afterimage.drawFrm);
