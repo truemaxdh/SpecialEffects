@@ -23,7 +23,8 @@ specialEffects.afterimage = function(el) {
   this.afterimage.cy = Math.random() * h;
   this.afterimage.r = Math.random() * ((w > h) ? (h / 7) : (w / 7));
   this.afterimage.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")"; 
-
+  this.afterimage.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
+  
   this.afterimage.drawFrm();
 };
   
@@ -38,7 +39,7 @@ specialEffects.afterimage.drawFrm = function() {
   ctx_bg.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx_bg.fillRect(0, 0, obj.w, obj.h);
 
-  ctx_bg.globalCompositeOperation = 'lighter';
+  ctx_bg.globalCompositeOperation = obj.gco;
   ctx_bg.beginPath();
   ctx_bg.fillStyle = obj.rgb;
   ctx_bg.arc(obj.cx, obj.cy, obj.r, 0, 2 * Math.PI);
@@ -50,7 +51,8 @@ specialEffects.afterimage.drawFrm = function() {
     obj.cx = 0;
     obj.cy = Math.random() * obj.h;
     obj.r = Math.random() * ((obj.w > obj.h) ? (obj.h / 7) : (obj.w / 7));
-    obj.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")"; 
+    obj.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
+    obj.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
   }
   
   requestAnimationFrame(specialEffects.afterimage.drawFrm);
