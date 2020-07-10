@@ -50,6 +50,12 @@
         specialEffects.afterimage(el);
       }
       
+      function demo_fireworks() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.fireworks(el);
+      }
+      
       window.onload = function() {
         demo_scratchMosaic();
       }
@@ -66,6 +72,7 @@
       <a href="javascript:demo_scratchMosaic();">demo_scratchMosaic</a>
       <a href="javascript:demo_lighterOverlay();">demo_lighterOverlay</a>
       <a href="javascript:demo_afterimage();">demo_afterimage</a>
+      <a href="javascript:demo_fireworks();">demo_fireworks</a>
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
       <a class="normalBtn" href="https://github.com/truemaxdh/SpecialEffects">GitHub</a>
