@@ -73,11 +73,14 @@ specialEffects.fireworks.drawFrm = function() {
       }
       if (++this.lifeCnt > 100) {
         this.prev.next = this.next;
+        this.next.prev = this.prev;
       }
     }
     var tmpObj = obj.listChain.start.next;
-    tmpObj.prev = newFire;
-    newFire.next = tmpObj;
+    if (tmpObj != null) {
+      tmpObj.prev = newFire;
+      newFire.next = tmpObj;
+    }
     newFire.prev = obj.listChain.start;
     obj.listChain.start.next = newFire;
   }
