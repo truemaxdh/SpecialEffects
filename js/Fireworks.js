@@ -40,7 +40,8 @@ specialEffects.fireworks = function(el) {
   this.fireworks.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
   this.fireworks.speed = Math.random() * w / 20 + 1;
   */
-  this.fireworks.drawFrm();
+  //this.fireworks.drawFrm();
+  console.log(this);
 };
   
 specialEffects.fireworks.drawFrm = function() {
