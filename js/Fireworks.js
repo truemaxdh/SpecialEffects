@@ -75,7 +75,11 @@ specialEffects.fireworks.drawFrm = function() {
         this.prev.next = this.next;
       }
     }
-    obj.listChain[obj.listChain.length - 1].next = newFire;
+    var tmpObj = obj.listChain.start.next;
+    tmpObj.prev = newFire;
+    newFire.next = tmpObj;
+    newFire.prev = obj.listChain.start;
+    obj.listChain.start.next = newFire;
   }
 
   requestAnimationFrame(specialEffects.fireworks.drawFrm);
