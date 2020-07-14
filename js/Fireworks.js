@@ -9,6 +9,8 @@ specialEffects.fireworks = function(el) {
   cnv_bg.style.width = el.style.width;
   cnv_bg.style.height = el.style.height;
   cnv_bg.id = "cnv_bg";
+  cnv_bg.width = cnv_bg.style.width.replace("px","");
+  cnv_bg.height = cnv_bg.style.height.replace("px","");
   el.appendChild(cnv_bg);
 
   var ctx_bg = cnv_bg.getContext("2d");
@@ -19,11 +21,10 @@ specialEffects.fireworks = function(el) {
   this.fireworks.h = h;
   this.fireworks.ctx_bg = ctx_bg;
   
-  this.fireworks.objFire = function() {
-    this.prev = null;
-    this.next = null;
-    this.draw = function() {};
-  }
+  this.fireworks.objFire = function() {};
+  this.fireworks.objFire.prev = null;
+  this.fireworks.objFire.next = null;
+  this.fireworks.objFire.draw = function() {};
   
   this.fireworks.listChain = {
     start : this.fireworks.objFire,
