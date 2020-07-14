@@ -22,11 +22,16 @@ specialEffects.fireworks = function(el) {
   this.fireworks.objFire = function() {
     this.prev = null;
     this.next = null;
+    this.draw = function() {};
   }
   
   this.fireworks.listChain = {
-    start : this.fireworks.objFire
+    start : this.fireworks.objFire,
+    end : this.fireworks.objFire
   }
+  
+  this.fireworks.listChain.start.next = this.fireworks.listChain.end;
+  this.fireworks.listChain.end.prev = this.fireworks.listChain.start;
   
   /*this.fireworks.cx = 0;
   this.fireworks.cy = Math.random() * h;
@@ -76,13 +81,11 @@ specialEffects.fireworks.drawFrm = function() {
         this.next.prev = this.prev;
       }
     }
-    var tmpObj = obj.listChain.start.next;
-    if (tmpObj != null) {
-      tmpObj.prev = newFire;
-      newFire.next = tmpObj;
-    }
-    newFire.prev = obj.listChain.start;
-    obj.listChain.start.next = newFire;
+    var tmpObj = obj.listChain.end.prev;
+    tmpObj.next = newFire;
+    newFire.prev = tmpObj;
+    newFire.next = obj.listChain.end;
+    obj.listChain.end.prev = newFire;
   }
 
   requestAnimationFrame(specialEffects.fireworks.drawFrm);
