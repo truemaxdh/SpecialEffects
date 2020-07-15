@@ -2,10 +2,36 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects = {};
 }
 
-function objFire() {
+function objBase() {
   this.prev = null;
   this.next = null;
-  this.draw = function() {};  
+  this.draw = function(ctx_bg) {};  
+}
+
+function objFire(w, h) {
+  objBase.call();
+  this.cx = Math.random() * w;
+  this.cy = Math.random() * h;
+  this.r = Math.random() * 15 + 5;
+  this.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
+  this.speed = Math.random() * w / 150 + 1;
+  this.lifeCnt = 0;
+  this.lifeLimit = Math.random() * 100 + 20;
+  this.radiusSpan = Math.random() * 20 + 15;
+  this.draw = function(ctx_bg) {
+    for (var i = 0; i < this.radiusSpan; i++) {
+      var x = this.cx + this.lifeCnt * this.speed * Math.cos(2 * Math.PI * i / this.radiusSpan);
+      var y = this.cy + this.lifeCnt * this.speed * Math.sin(2 * Math.PI * i / this.radiusSpan);
+      ctx_bg.beginPath();
+      ctx_bg.fillStyle = this.rgb;
+      ctx_bg.arc(x, y, this.r, 0, 2 * Math.PI);
+      ctx_bg.fill();
+    }
+    if (++this.lifeCnt > this.lifeLimit) {
+      this.prev.next = this.next;
+      this.next.prev = this.prev;
+    }
+  }
 }
 
 specialEffects.fireworks = function(el) {
@@ -27,8 +53,8 @@ specialEffects.fireworks = function(el) {
   this.fireworks.ctx_bg = ctx_bg;
   
   this.fireworks.listChain = {
-    start : new objFire(),
-    end : new objFire()
+    start : new objBase(),
+    end : new objBase()
   }
   
   this.fireworks.listChain.start.next = this.fireworks.listChain.end;
@@ -60,33 +86,11 @@ specialEffects.fireworks.drawFrm = function() {
   ctx_bg.globalCompositeOperation = 'lighter';
   var fire = obj.listChain.start;
   while((fire = fire.next) != null) {
-    fire.draw();
+    fire.draw(ctx_bg);
   }
 
   if (Math.floor(Math.random() * 40) == 0) {
-    var newFire = new objFire();
-    newFire.cx = Math.random() * obj.w;
-    newFire.cy = Math.random() * obj.h;
-    newFire.r = Math.random() * 15 + 5;
-    newFire.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
-    newFire.speed = Math.random() * obj.w / 150 + 1;
-    newFire.lifeCnt = 0;
-    newFire.lifeLimit = Math.random() * 100 + 20;
-    newFire.radiusSpan = Math.random() * 20 + 15;
-    newFire.draw = function() {
-      for (var i = 0; i < this.radiusSpan; i++) {
-        var x = this.cx + this.lifeCnt * this.speed * Math.cos(2 * Math.PI * i / this.radiusSpan);
-        var y = this.cy + this.lifeCnt * this.speed * Math.sin(2 * Math.PI * i / this.radiusSpan);
-        ctx_bg.beginPath();
-        ctx_bg.fillStyle = this.rgb;
-        ctx_bg.arc(x, y, this.r, 0, 2 * Math.PI);
-        ctx_bg.fill();
-      }
-      if (++this.lifeCnt > this.lifeLimit) {
-        this.prev.next = this.next;
-        this.next.prev = this.prev;
-      }
-    }
+    var newFire = new objFire(obj.w, obj.h);
     var tmpObj = obj.listChain.end.prev;
     tmpObj.next = newFire;
     newFire.prev = tmpObj;

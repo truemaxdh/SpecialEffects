@@ -3,7 +3,6 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 }
 
 specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, subColor, bgColor, fwColor) {
-  console.log(el.style);
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
   //cnv_bg.style.left = el.style.left;
@@ -16,7 +15,6 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   var _scale = Math.min(320 / _w, 240 / _h);
   var w = _w * _scale;
   var h = _h * _scale;
-console.log(_w + "," + _h + "," + _scale);
   cnv_bg.width = w;
   cnv_bg.height = h;
   el.appendChild(cnv_bg);
