@@ -48,7 +48,13 @@
       }
       
       window.onload = function() {
-        demo_fireworks();
+        var _href = window.location.href;
+        var _split = _href.split("#");
+        if (_split.length < 2) {
+          demo_fireworks();
+        } else {
+          eval("demo_" + _split[1] + "();" );
+        }        
       }
     </script>
 
