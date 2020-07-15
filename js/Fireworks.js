@@ -2,8 +2,13 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects = {};
 }
 
+function objFire() {
+  this.prev = null;
+  this.next = null;
+  this.draw = function() {};  
+}
+
 specialEffects.fireworks = function(el) {
-  console.log(el.style);
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
   cnv_bg.style.width = el.style.width;
@@ -21,14 +26,9 @@ specialEffects.fireworks = function(el) {
   this.fireworks.h = h;
   this.fireworks.ctx_bg = ctx_bg;
   
-  this.fireworks.objFire = function() {};
-  this.fireworks.objFire.prev = null;
-  this.fireworks.objFire.next = null;
-  this.fireworks.objFire.draw = function() {};
-  
   this.fireworks.listChain = {
-    start : this.fireworks.objFire,
-    end : this.fireworks.objFire
+    start : new objFire(),
+    end : new objFire()
   }
   
   this.fireworks.listChain.start.next = this.fireworks.listChain.end;
@@ -41,8 +41,8 @@ specialEffects.fireworks = function(el) {
   this.fireworks.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
   this.fireworks.speed = Math.random() * w / 20 + 1;
   */
-  //this.fireworks.drawFrm();
-  console.log(this);
+  this.fireworks.drawFrm();
+  //console.log(this);
 };
   
 specialEffects.fireworks.drawFrm = function() {
@@ -63,22 +63,26 @@ specialEffects.fireworks.drawFrm = function() {
     fire.draw();
   }
 
-  if (Math.floor(Math.random() * 100) == 0) {
-    var newFire = new obj.objFire;
+  if (Math.floor(Math.random() * 40) == 0) {
+    var newFire = new objFire();
     newFire.cx = Math.random() * obj.w;
     newFire.cy = Math.random() * obj.h;
+    newFire.r = Math.random() * 15 + 5;
     newFire.rgb = "rgb(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
-    newFire.speed = Math.random() * obj.w / 20 + 1;
+    newFire.speed = Math.random() * obj.w / 150 + 1;
     newFire.lifeCnt = 0;
+    newFire.lifeLimit = Math.random() * 100 + 20;
+    newFire.radiusSpan = Math.random() * 20 + 15;
     newFire.draw = function() {
-      for (var i = 0; i < 10; i++) {
-        var x = this.cx + this.lifeCnt * Math.cos(Math.PI * i / 10);
-        var y = this.cy + this.lifeCnt * Math.sin(Math.PI * i / 10);
+      for (var i = 0; i < this.radiusSpan; i++) {
+        var x = this.cx + this.lifeCnt * this.speed * Math.cos(2 * Math.PI * i / this.radiusSpan);
+        var y = this.cy + this.lifeCnt * this.speed * Math.sin(2 * Math.PI * i / this.radiusSpan);
+        ctx_bg.beginPath();
         ctx_bg.fillStyle = this.rgb;
-        ctx_bg.arc(x, y, 10, 0, 2 * Math.PI);
+        ctx_bg.arc(x, y, this.r, 0, 2 * Math.PI);
         ctx_bg.fill();
       }
-      if (++this.lifeCnt > 100) {
+      if (++this.lifeCnt > this.lifeLimit) {
         this.prev.next = this.next;
         this.next.prev = this.prev;
       }

@@ -9,6 +9,8 @@ specialEffects.afterimage = function(el) {
   cnv_bg.style.width = el.style.width;
   cnv_bg.style.height = el.style.height;
   cnv_bg.id = "cnv_bg";
+  cnv_bg.width = cnv_bg.style.width.replace("px","");
+  cnv_bg.height = cnv_bg.style.height.replace("px","");
   el.appendChild(cnv_bg);
 
   var ctx_bg = cnv_bg.getContext("2d");

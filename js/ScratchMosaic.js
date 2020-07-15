@@ -11,6 +11,14 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   cnv_bg.style.width = el.style.width;
   cnv_bg.style.height = el.style.height;
   cnv_bg.id = "cnv_bg";
+  var _w = Number(cnv_bg.style.width.replace("px",""));
+  var _h = Number(cnv_bg.style.height.replace("px",""));
+  var _scale = Math.min(320 / _w, 240 / _h);
+  var w = _w * _scale;
+  var h = _h * _scale;
+console.log(_w + "," + _h + "," + _scale);
+  cnv_bg.width = w;
+  cnv_bg.height = h;
   el.appendChild(cnv_bg);
 
   var cnv_fw = document.createElement("CANVAS");
@@ -19,14 +27,14 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   cnv_fw.style.top = "-" + el.style.height;
   cnv_fw.style.width = el.style.width;
   cnv_fw.style.height = el.style.height;
+  cnv_fw.width = w;
+  cnv_fw.height = h;
   cnv_fw.id = "cnv_fw";
   el.appendChild(cnv_fw);
 
   var ctx_bg = cnv_bg.getContext("2d");
   var ctx_fw = cnv_fw.getContext("2d");
-  var w = cnv_bg.width;
-  var h = cnv_bg.height;
-
+  
   // ---------
   // bg canvas
   // ---------
