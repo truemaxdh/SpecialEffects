@@ -61,7 +61,7 @@ specialEffects.aurora.drawFrm = function(timeStamp) {
 
       // draw
       //ctx.globalCompositeOperation = (Math.random() < 0.998) ? "saturation" : "source-over";
-      ctx.globalCompositeOperation = b.gco;
+      obj.ctx.globalCompositeOperation = b.gco;
       if (b.gco == "source-over")
         obj.ctx.globalAlpha = 0.2;
       else
