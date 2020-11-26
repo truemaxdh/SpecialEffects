@@ -92,5 +92,5 @@ specialEffects.aurora.drawFrm = function(timeStamp) {
     }
   }
 
-  requestAnimationFrame(frame);
+  requestAnimationFrame(specialEffects.aurora.drawFrm);
 }
