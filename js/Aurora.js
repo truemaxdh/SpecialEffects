@@ -52,7 +52,7 @@ specialEffects.aurora = function(el) {
 }
 
 specialEffects.aurora.drawFrm = function(timeStamp) {
-  var obj = specialEffects.fireworks
+  var obj = specialEffects.aurora
   if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
   if ((timeStamp - obj.lastTimeStamp) > 30) {
     obj.lastTimeStamp = timeStamp;
