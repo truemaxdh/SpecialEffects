@@ -21,9 +21,9 @@ specialEffects.aurora = function(el) {
   cnv.style.position = "relative";
   cnv.style.width = el.style.width;
   cnv.style.height = el.style.height;
-  cnv.id = "cnv_bg";
-  cnv.width = cnv_bg.style.width.replace("px","");
-  cnv.height = cnv_bg.style.height.replace("px","");
+  cnv.id = "cnv";
+  cnv.width = cnv.style.width.replace("px","");
+  cnv.height = cnv.style.height.replace("px","");
   el.appendChild(cnv);
 
   this.aurora.ctx = cnv.getContext("2d");
