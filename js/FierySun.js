@@ -58,6 +58,7 @@ specialEffects.fierysun.drawFrm = function(timeStamp) {
       }
 
     }
+    obj.ctx.fill();
   }
 
   requestAnimationFrame(specialEffects.aurora.drawFrm);
