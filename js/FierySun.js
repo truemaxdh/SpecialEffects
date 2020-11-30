@@ -32,8 +32,17 @@ specialEffects.fierysun = function(el) {
   this.fierysun.r = 50 + (Math.min(cnv.width, cnv.height) - 50) * Math.random();
   this.fierysun.cx = cnv.width * Math.random();
   this.fierysun.cy = cnv.height * Math.random();
+  this.fierysun.div = Math.floor(12 + 58 * Math.random()) * 2;
+  this.fierysun.bgr.b = 0;
+  this.fierysun.bgr.g = 0;
+  this.fierysun.bgr.r = 255;
   this.fierysun.lastTimeStamp = null;
-  
+  this.fierysun.getNewC = function(c) {
+    c += Math.random() * 3 - 1;
+    if (c < 0) c = 0;
+    if (c > 255) c = 255;
+    return c;
+  }
   this.fierysun.drawFrm();
 }
 
@@ -44,11 +53,15 @@ specialEffects.fierysun.drawFrm = function(timeStamp) {
     obj.lastTimeStamp = timeStamp;
     obj.ctx.fillStyle = "DeepSkyBlue";
     obj.ctx.fillRect(0, 0, obj.w, obj.h);
-    obj.ctx.fillStyle = "#FF0000";
+    obj.bgr.b = obj.getNewC(obj.bgr.b);
+    obj.bgr.g = obj.getNewC(obj.bgr.g);
+    obj.bgr.r = obj.getNewC(obj.bgr.r);
+   
+    obj.ctx.fillStyle = "rgb(" + obj.bgr.r + "," + obj.bgr.g + "," + obj.bgr.b + ")";
     obj.ctx.beginPath();
     
-    for (var i = 0; i < 120; i++) {
-      var rad = i * Math.PI / 60;
+    for (var i = 0; i < this.fierysun.div; i++) {
+      var rad = i * 2 * Math.PI / this.fierysun.div;
       var tmp_r = obj.r - (Math.random() * 5 - 2);
       var x = obj.cx + tmp_r * Math.cos(rad);
       var y = obj.cy + tmp_r * Math.sin(rad);
