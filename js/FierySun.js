@@ -40,7 +40,7 @@ specialEffects.fierysun = function(el) {
 specialEffects.fierysun.drawFrm = function(timeStamp) {
   var obj = specialEffects.fierysun
   if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-  if ((timeStamp - obj.lastTimeStamp) > 30) {
+  if ((timeStamp - obj.lastTimeStamp) > 100) {
     obj.lastTimeStamp = timeStamp;
     obj.ctx.fillStyle = "DeepSkyBlue";
     obj.ctx.fillRect(0, 0, obj.w, obj.h);
