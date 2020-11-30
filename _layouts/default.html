@@ -23,6 +23,8 @@
     <script src="js/Afterimage.js"></script>
     <script src="js/Fireworks.js"></script>
     <script src="js/Aurora.js"></script>
+    <script src="js/FierySun.js"></script>
+    
     <script>
       function demo_scratchMosaic() {
         var el = document.getElementById("board");
@@ -63,6 +65,12 @@
         el.innerHTML = "";
         specialEffects.aurora(el);
       }
+            
+      function demo_fierysun() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.fierysun(el);
+      }
       
       window.onload = function() {
         var _href = window.location.href;
@@ -88,6 +96,8 @@
       <a href="javascript:demo_afterimage();">demo_afterimage</a>
       <a href="javascript:demo_fireworks();">demo_fireworks</a>
       <a href="javascript:demo_aurora();">demo_aurora</a>
+      <a href="javascript:demo_fierysun();">demo_fierysun</a>
+      
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
       <a class="normalBtn" href="https://github.com/truemaxdh/SpecialEffects">GitHub</a>
