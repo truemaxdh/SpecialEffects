@@ -40,7 +40,7 @@ specialEffects.fierysun = function(el) {
 specialEffects.fierysun.drawFrm = function(timeStamp) {
   var obj = specialEffects.fierysun
   if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-  if ((timeStamp - obj.lastTimeStamp) > 100) {
+  if ((timeStamp - obj.lastTimeStamp) > 150) {
     obj.lastTimeStamp = timeStamp;
     obj.ctx.fillStyle = "DeepSkyBlue";
     obj.ctx.fillRect(0, 0, obj.w, obj.h);
@@ -49,7 +49,7 @@ specialEffects.fierysun.drawFrm = function(timeStamp) {
     
     for (var i = 0; i < 24; i++) {
       var rad = i * Math.PI / 12;
-      var tmp_r = obj.r - (Math.random() * 7 - 3);
+      var tmp_r = obj.r - (Math.random() * 5 - 2);
       var x = obj.cx + tmp_r * Math.cos(rad);
       var y = obj.cy + tmp_r * Math.sin(rad);
 
