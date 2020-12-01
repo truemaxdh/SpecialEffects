@@ -58,8 +58,8 @@ specialEffects.fierysun.drawFrm = function(timeStamp) {
     obj.ctx.fillStyle = "rgb(" + obj.bgr.r + "," + obj.bgr.g + "," + obj.bgr.b + ")";
     obj.ctx.beginPath();
     
-    for (var i = 0; i < this.fierysun.div; i++) {
-      var rad = i * 2 * Math.PI / this.fierysun.div;
+    for (var i = 0; i < obj.div; i++) {
+      var rad = i * 2 * Math.PI / obj.div;
       var tmp_r = obj.r - (Math.random() * 5 - 2);
       var x = obj.cx + tmp_r * Math.cos(rad);
       var y = obj.cy + tmp_r * Math.sin(rad);
