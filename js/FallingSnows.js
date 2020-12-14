@@ -49,11 +49,11 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     obj.ctx.shadowBlur = 4;
     obj.ctx.shadowColor = "black";
     obj.ctx.strokeStyle="#888";
-    obj.ctx.lineWidth = 3;
     
     for (var i = 0; i < obj.snows.length; i++) {
       var b = obj.snows[i];
-      for (var j = 0; j < 3; j++) {
+      obj.ctx.lineWidth = b.r * 0.8;
+      for (var j = 0; j < 3; j++) {        
         obj.ctx.beginPath();
         var rad = j * Math.PI / 3;
         obj.ctx.moveTo(b.cx - Math.cos(rad) * b.r, b.cy - Math.sin(rad) * b.r);
