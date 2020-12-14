@@ -50,20 +50,22 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     obj.ctx.shadowColor = "black";
     obj.ctx.strokeStyle="#aaa";
     obj.ctx.lineWidth = 3;
-    obj.ctx.beginPath();
+    
     for (var i = 0; i < obj.snows.length; i++) {
       var b = obj.snows[i];
       for (var j = 0; j < 3; j++) {
+        obj.ctx.beginPath();
         var rad = j * Math.PI / 3;
         obj.ctx.moveTo(b.cx - Math.cos(rad) * b.r, b.cy - Math.sin(rad) * b.r);
         obj.ctx.lineTo(b.cx + Math.cos(rad) * b.r, b.cy + Math.sin(rad) * b.r);
+        obj.ctx.stroke();
       }
       b.cy += b.dy;
       if (b.cy > obj.h) {
         obj.snows.splice(i--, 1);
       }
     }
-    obj.ctx.stroke();
+    
     //console.log(obj.snows.length);
     if (obj.snows.length < 100 && Math.random() < 0.2) {
       obj.snows.push( 
