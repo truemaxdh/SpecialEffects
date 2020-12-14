@@ -46,9 +46,9 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     
     // draw
     obj.ctx.globalCompositeOperation = "lighter";
-    obj.ctx.shadowBlur = 3;
+    obj.ctx.shadowBlur = 4;
     obj.ctx.shadowColor = "black";
-    obj.ctx.strokeStyle="#aaa";
+    obj.ctx.strokeStyle="#888";
     obj.ctx.lineWidth = 3;
     
     for (var i = 0; i < obj.snows.length; i++) {
@@ -72,7 +72,7 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
         new _snow(
           Math.random() * obj.w, 
           0,
-          Math.min(obj.w, obj.h) * (Math.random() * 0.02 + 0.01),
+          Math.min(obj.w, obj.h) * (Math.random() * 0.015 + 0.005),
           (obj.h * 0.005 + Math.random() * obj.h * 0.02)
         )
       );
