@@ -51,8 +51,8 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     obj.ctx.beginPath();
     for (var i = 0; i < obj.snows.length; i++) {
       var b = obj.snows[i];
-      for (var i = 0; i < 3; i++) {
-        var rad = i * Math.PI / 3;
+      for (var j = 0; j < 3; j++) {
+        var rad = j * Math.PI / 3;
         obj.ctx.moveTo(b.cx - Math.cos(rad) * b.r, b.cy - Math.sin(rad) * b.r);
         obj.ctx.lineTo(b.cx + Math.cos(rad) * b.r, b.cy + Math.sin(rad) * b.r);
       }
