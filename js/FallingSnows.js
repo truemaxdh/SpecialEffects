@@ -46,8 +46,6 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     
     // draw
     obj.ctx.globalCompositeOperation = "lighter";
-    obj.ctx.shadowBlur = 4;
-    obj.ctx.shadowColor = "black";
     obj.ctx.strokeStyle="#888";
     
     for (var i = 0; i < obj.snows.length; i++) {
