@@ -46,11 +46,11 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     
     // draw
     obj.ctx.globalCompositeOperation = "lighter";
-    obj.ctx.strokeStyle="#888";
+    obj.ctx.strokeStyle="#ccc";
     
     for (var i = 0; i < obj.snows.length; i++) {
       var b = obj.snows[i];
-      obj.ctx.lineWidth = b.r * 0.5;
+      obj.ctx.lineWidth = b.r * 0.7;
       for (var j = 0; j < 3; j++) {        
         obj.ctx.beginPath();
         var rad = j * Math.PI / 3;
