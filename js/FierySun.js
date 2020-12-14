@@ -14,7 +14,7 @@ function _point(cx, cy, r, dx, dy, c, gco, dur) {
   this.duration = dur;
 }
 
-specialEffects.fierysun = function(el) {
+specialEffects.fierySun = function(el) {
   console.log(el.style);
   
   var cnv = document.createElement("CANVAS");
@@ -26,26 +26,26 @@ specialEffects.fierysun = function(el) {
   cnv.height = cnv.style.height.replace("px","");
   el.appendChild(cnv);
 
-  this.fierysun.ctx = cnv.getContext("2d");
-  this.fierysun.w = cnv.width;
-  this.fierysun.h =cnv.height;
-  this.fierysun.r = 50 + (Math.min(cnv.width, cnv.height) - 50) * Math.random();
-  this.fierysun.cx = cnv.width * Math.random();
-  this.fierysun.cy = cnv.height * Math.random();
-  this.fierysun.div = Math.floor(12 + 58 * Math.random()) * 2;
-  this.fierysun.bgr = {r:255, g:0, b:0};
-  this.fierysun.lastTimeStamp = null;
-  this.fierysun.getNewC = function(c) {
+  this.fierySun.ctx = cnv.getContext("2d");
+  this.fierySun.w = cnv.width;
+  this.fierySun.h =cnv.height;
+  this.fierySun.r = 50 + (Math.min(cnv.width, cnv.height) - 50) * Math.random();
+  this.fierySun.cx = cnv.width * Math.random();
+  this.fierySun.cy = cnv.height * Math.random();
+  this.fierySun.div = Math.floor(12 + 58 * Math.random()) * 2;
+  this.fierySun.bgr = {r:255, g:0, b:0};
+  this.fierySun.lastTimeStamp = null;
+  this.fierySun.getNewC = function(c) {
     c += Math.random() * 3 - 1;
     if (c < 0) c = 0;
     if (c > 255) c = 255;
     return c;
   }
-  this.fierysun.drawFrm();
+  this.fierySun.drawFrm();
 }
 
-specialEffects.fierysun.drawFrm = function(timeStamp) {
-  var obj = specialEffects.fierysun
+specialEffects.fierySun.drawFrm = function(timeStamp) {
+  var obj = specialEffects.fierySun
   if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
   if ((timeStamp - obj.lastTimeStamp) > 150) {
     obj.lastTimeStamp = timeStamp;
@@ -75,5 +75,5 @@ specialEffects.fierysun.drawFrm = function(timeStamp) {
     obj.ctx.fill();
   }
 
-  requestAnimationFrame(specialEffects.fierysun.drawFrm);
+  requestAnimationFrame(specialEffects.fierySun.drawFrm);
 }
