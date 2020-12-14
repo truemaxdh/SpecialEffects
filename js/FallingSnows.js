@@ -28,7 +28,7 @@ specialEffects.fallingSnows = function(el) {
   this.fallingSnows.snows = [];
   this.fallingSnows.lastTimeStamp = null;
   
-  this.aurora.drawFrm();
+  this.fallingSnows.drawFrm();
 }
 
 specialEffects.fallingSnows.drawFrm = function(timeStamp) {
@@ -76,5 +76,5 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
 
   }
 
-  requestAnimationFrame(specialEffects.aurora.drawFrm);
+  requestAnimationFrame(specialEffects.fallingSnows.drawFrm);
 }
