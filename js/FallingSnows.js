@@ -64,7 +64,7 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
       }
     }
     obj.ctx.stroke();
-    console.log(obj.snows.length);
+    //console.log(obj.snows.length);
     if (obj.snows.length < 100 && Math.random() < 0.2) {
       obj.snows.push( 
         new _snow(
@@ -74,7 +74,7 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
           (obj.h * 0.005 + Math.random() * obj.h * 0.02)
         )
       );
-      console.log(obj.snows);
+      //console.log(obj.snows);
     }  
 
   }
