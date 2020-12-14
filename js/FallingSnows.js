@@ -60,7 +60,7 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
       }
       b.cy += b.dy;
       if (b.cy > obj.h) {
-        obj.snows.splice(i--);
+        obj.snows.splice(i--, 1);
       }
     }
     obj.ctx.stroke();
