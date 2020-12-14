@@ -66,10 +66,10 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
     if (obj.snows.length < 100 && Math.random() < 0.2) {
       obj.snows.push( 
         new _snow(
-          Math.random() * cnv.width, 
-          Math.random() * cnv.height,
-          Math.min(cnv.width, cnv.height) * (Math.random() * 0.05 + 0.01),
-          (1 + Math.random() * cnv.height * 0.05)
+          Math.random() * obj.w, 
+          Math.random() * obj.h,
+          Math.min(obj.w, obj.h) * (Math.random() * 0.05 + 0.01),
+          (1 + Math.random() * obj.h * 0.05)
         )
       );
       console.log(obj.snows);
