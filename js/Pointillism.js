@@ -20,7 +20,7 @@ specialEffects.pointillism = function(el) {
   obj.h =cnv.height;
   obj.x = 0;
   obj.y = 0;
-  obj.d = Math.min(obj.w, obj.h) / 25;
+  obj.d = Math.max(obj.w, obj.h) / 25;
   obj.lastTimeStamp = null;
   obj.imgOri = new Image();
   obj.imgOri.src = "images/20170727_130136.jpg";
@@ -49,6 +49,7 @@ specialEffects.pointillism = function(el) {
           obj.y += obj.d;
           if (obj.y > obj.h) {
             obj.y = 0;
+            obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 40);
           }
         }
       }
