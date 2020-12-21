@@ -25,6 +25,7 @@
     <script src="js/Aurora.js"></script>
     <script src="js/FierySun.js"></script>
     <script src="js/FallingSnows.js"></script>
+    <script src="js/Pointillism.js"></script>
     
     <script>
       function demo_scratchMosaic() {
@@ -78,6 +79,12 @@
         el.innerHTML = "";
         specialEffects.fallingSnows(el);
       }
+            
+      function demo_pointillism() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.pointillism(el);
+      }
       
       window.onload = function() {
         var _href = window.location.href;
@@ -105,6 +112,7 @@
       <a href="javascript:demo_aurora();">Aurora</a>
       <a href="javascript:demo_fierySun();">FierySun</a>
       <a href="javascript:demo_fallingSnows();">FallingSnows</a>
+      <a href="javascript:demo_pointillism();">Pointillism</a>
       
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
