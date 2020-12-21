@@ -32,7 +32,7 @@ specialEffects.fallingSnows = function(el) {
 }
 
 specialEffects.fallingSnows.drawFrm = function(timeStamp) {
-  var obj = specialEffects.fallingSnows
+  var obj = specialEffects.fallingSnows;
   if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
   if ((timeStamp - obj.lastTimeStamp) > 30) {
     obj.lastTimeStamp = timeStamp;
