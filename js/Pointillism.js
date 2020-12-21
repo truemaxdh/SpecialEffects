@@ -33,9 +33,12 @@ specialEffects.pointillism = function(el) {
 
       // draw
       obj.ctx.beginPath();
-      var color = obj.ctx.getImageData(obj.x + obj.d / 2, obj.y + obj.d / 2, 1, 1).data;
+      var r = obj.d / 2;
+      var cx = obj.x + r;
+      var cy = obj.y + r;
+      var color = obj.ctx.getImageData(cx, cy, 1, 1).data;
       obj.ctx.fillStyle="rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
-      obj.ctx.rect(obj.x, obj.y, obj.d, obj.d);       
+      obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
       obj.ctx.fill();
       
       obj.x += obj.d;
