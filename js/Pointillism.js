@@ -20,7 +20,7 @@ specialEffects.pointillism = function(el) {
   obj.h =cnv.height;
   obj.x = 0;
   obj.y = 0;
-  obj.d = Math.min(obj.w, obj.h) / 50;
+  obj.d = Math.min(obj.w, obj.h) / 25;
   obj.lastTimeStamp = null;
   obj.imgOri = new Image();
   obj.imgOri.src = "images/20170727_130136.jpg";
@@ -31,23 +31,25 @@ specialEffects.pointillism = function(el) {
     if ((timeStamp - obj.lastTimeStamp) > 30) {
       obj.lastTimeStamp = timeStamp;
 
-      // draw
-      obj.ctx.beginPath();
-      var r = obj.d / 2;
-      var cx = obj.x + r;
-      var cy = obj.y + r;
-      var color = obj.ctx.getImageData(cx, cy, 1, 1).data;
-      obj.ctx.fillStyle="rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
-      obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-      obj.ctx.fill();
-      
-      obj.x += obj.d;
-      
-      if (obj.x > obj.w) {
-        obj.x = 0;
-        obj.y += obj.d;
-        if (obj.y > obj.h) {
-          obj.y = 0;
+      for (var i = 0; i < 10; i++) {
+        // draw
+        obj.ctx.beginPath();
+        var r = obj.d / 2;
+        var cx = obj.x + r;
+        var cy = obj.y + r;
+        var color = obj.ctx.getImageData(cx, cy, 1, 1).data;
+        obj.ctx.fillStyle="rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
+        obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+        obj.ctx.fill();
+
+        obj.x += obj.d;
+
+        if (obj.x > obj.w) {
+          obj.x = 0;
+          obj.y += obj.d;
+          if (obj.y > obj.h) {
+            obj.y = 0;
+          }
         }
       }
     }
