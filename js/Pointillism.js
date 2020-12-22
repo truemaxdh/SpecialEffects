@@ -26,7 +26,7 @@ specialEffects.pointillism = function(el) {
   obj.imgOri.src = "images/20170727_130136.jpg";
   obj.imgOri.onload = function() {
     obj.ctx.drawImage(obj.imgOri, 0, 0, obj.w, obj.h);
-    obj.imgData = obj.ctx.getImageData(0, 0, obj.w, obj.h);
+    obj.imgData = obj.ctx.getImageData(0, 0, obj.w, obj.h).data;
     obj.drawFrm();
   }
   
