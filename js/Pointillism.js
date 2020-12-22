@@ -24,7 +24,11 @@ specialEffects.pointillism = function(el) {
   obj.lastTimeStamp = null;
   obj.imgOri = new Image();
   obj.imgOri.src = "images/20170727_130136.jpg";
-  obj.ctx.drawImage(obj.imgOri, 0, 0, obj.w, obj.h);
+  obj.imgOri.onload = function() {
+    obj.ctx.drawImage(obj.imgOri, 0, 0, obj.w, obj.h);
+    obj.imgData = obj.ctx.getImageData(0, 0, obj.w, obj.h);
+    obj.drawFrm();
+  }
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
@@ -34,11 +38,11 @@ specialEffects.pointillism = function(el) {
       for (var i = 0; i < 10; i++) {
         // draw
         obj.ctx.beginPath();
-        var r = obj.d / 2;
-        var cx = obj.x + r;
-        var cy = obj.y + r;
-        var color = obj.ctx.getImageData(cx, cy, 1, 1).data;
-        obj.ctx.fillStyle="rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
+        var r = Math.floor(obj.d / 2);
+        var cx = Math.floor(obj.x) + r;
+        var cy = Math.floor(obj.y) + r;
+        var pos = 4 * (cy * obj.w + cx);
+        obj.ctx.fillStyle="rgb(" + obj.imgData[pos++] + "," + obj.imgData[pos++] + "," + obj.imgData[pos++] + ")";
         obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
         obj.ctx.fill();
 
@@ -57,7 +61,7 @@ specialEffects.pointillism = function(el) {
 
     requestAnimationFrame(obj.drawFrm);
   }
-  obj.drawFrm();
+  
 }
 
 
