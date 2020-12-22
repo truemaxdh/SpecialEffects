@@ -43,11 +43,11 @@ specialEffects.pointillism = function(el) {
         // draw
         obj.ctx.beginPath();
         var r = Math.floor(obj.d / 2);
-        var cx = Math.floor(obj.x) + r;
-        var cy = Math.floor(obj.y) + r;
-        if (cx >= obj.w) cx = obj.w - 1;
-        if (cy >= obj.h) cy = obj.h - 1;
-        var pos = 4 * (cy * obj.w + cx);
+        var cx = cx1 = Math.floor(obj.x) + r;
+        var cy = cy1 = Math.floor(obj.y) + r;
+        if (cx >= obj.w) cx1 = obj.w - 1;
+        if (cy >= obj.h) cy1 = obj.h - 1;
+        var pos = 4 * (cy1 * obj.w + cx1);
         obj.ctx.fillStyle="rgb(" + obj.imgData[pos++] + "," + obj.imgData[pos++] + "," + obj.imgData[pos++] + ")";
         obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
         obj.ctx.fill();
