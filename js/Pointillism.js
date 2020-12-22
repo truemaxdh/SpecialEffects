@@ -37,39 +37,38 @@ specialEffects.pointillism = function(el) {
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-    if ((timeStamp - obj.lastTimeStamp) > 30) {
+    if ((timeStamp - obj.lastTimeStamp) > 1200) {
       obj.lastTimeStamp = timeStamp;
 
       obj.ctx.fillStyle="black";
       obj.ctx.rect(0, obj.y, obj.w, obj.d);
       obj.ctx.fill();
 
-      while (obj.x < obj.w) {
-        // draw
-        obj.ctx.beginPath();
-        var r = Math.floor(obj.d / 2);
-        var cx = cx1 = Math.floor(obj.x) + r;
-        var cy = cy1 = Math.floor(obj.y) + r;
-        if (cx >= obj.w) cx1 = obj.w - 1;
-        if (cy >= obj.h) cy1 = obj.h - 1;
-        var pos = 4 * (cy1 * obj.w + cx1);
-        obj.ctx.fillStyle="rgb(" + obj.imgData[pos++] + "," + obj.imgData[pos++] + "," + obj.imgData[pos++] + ")";
-        obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-        obj.ctx.fill();
+      while (obj.y < obj.h) {
+        while (obj.x < obj.w) {
+          // draw
+          obj.ctx.beginPath();
+          var r = Math.floor(obj.d / 2);
+          var cx = cx1 = Math.floor(obj.x) + r;
+          var cy = cy1 = Math.floor(obj.y) + r;
+          if (cx >= obj.w) cx1 = obj.w - 1;
+          if (cy >= obj.h) cy1 = obj.h - 1;
+          var pos = 4 * (cy1 * obj.w + cx1);
+          obj.ctx.fillStyle="rgb(" + obj.imgData[pos++] + "," + obj.imgData[pos++] + "," + obj.imgData[pos++] + ")";
+          obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+          obj.ctx.fill();
 
-        obj.x += obj.d;
-      }
+          obj.x += obj.d;
+        }
       
-      obj.x = 0;
-      obj.y += obj.d;
-      if (obj.y > obj.h) {
-        obj.y = 0;
-        obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 90);
-        setTimeout(obj.drawFrm, 1000);
-        return;
+        obj.x = 0;
+        obj.y += obj.d;
       }
     }
 
+    obj.y = 0;
+    obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 90);
+    
     requestAnimationFrame(obj.drawFrm);
   }
   
