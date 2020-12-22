@@ -54,12 +54,15 @@ specialEffects.pointillism = function(el) {
 
         obj.x += obj.d;
       }
-        obj.x = 0;
-        obj.y += obj.d;
-        if (obj.y > obj.h) {
-          obj.y = 0;
-          obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 40);
-        }
+      
+      obj.x = 0;
+      obj.y += obj.d;
+      if (obj.y > obj.h) {
+        obj.y = 0;
+        obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 90);
+        setTimeout(obj.drawFrm, 1000);
+        return;
+      }
     }
 
     requestAnimationFrame(obj.drawFrm);
