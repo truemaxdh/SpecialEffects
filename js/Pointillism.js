@@ -25,7 +25,12 @@ specialEffects.pointillism = function(el) {
   obj.imgOri = new Image();
   obj.imgOri.src = "images/20170727_130136.jpg";
   obj.imgOri.onload = function() {
-    obj.ctx.drawImage(obj.imgOri, 0, 0, obj.w, obj.h);
+    var scale = Math.min(obj.w / obj.imgOri.width, obj.h / obj.imgOri.height);
+    var w = obj.imgOri.width * scale;
+    var h = obj.imgOri.height * scale;
+    var l = (obj.w - w) / 2;
+    var t = (obj.h - h) / 2;
+    obj.ctx.drawImage(obj.imgOri, l, t, w, h);
     obj.imgData = obj.ctx.getImageData(0, 0, obj.w, obj.h).data;
     obj.drawFrm();
   }
