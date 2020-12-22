@@ -35,28 +35,31 @@ specialEffects.pointillism = function(el) {
     if ((timeStamp - obj.lastTimeStamp) > 30) {
       obj.lastTimeStamp = timeStamp;
 
-      for (var i = 0; i < 10; i++) {
+      obj.ctx.fillStyle="black";
+      obj.ctx.rect(0, obj.y, obj.d, obj.d);
+      obj.ctx.fill();
+
+      while (obj.x < obj.w) {
         // draw
         obj.ctx.beginPath();
         var r = Math.floor(obj.d / 2);
         var cx = Math.floor(obj.x) + r;
         var cy = Math.floor(obj.y) + r;
+        if (cx >= obj.w) cx = obj.w - 1;
+        if (cy >= obj.h) cy = obj.h - 1;
         var pos = 4 * (cy * obj.w + cx);
         obj.ctx.fillStyle="rgb(" + obj.imgData[pos++] + "," + obj.imgData[pos++] + "," + obj.imgData[pos++] + ")";
         obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
         obj.ctx.fill();
 
         obj.x += obj.d;
-
-        if (obj.x > obj.w) {
-          obj.x = 0;
-          obj.y += obj.d;
-          if (obj.y > obj.h) {
-            obj.y = 0;
-            obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 40);
-          }
-        }
       }
+        obj.x = 0;
+        obj.y += obj.d;
+        if (obj.y > obj.h) {
+          obj.y = 0;
+          obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 40);
+        }
     }
 
     requestAnimationFrame(obj.drawFrm);
