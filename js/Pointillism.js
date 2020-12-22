@@ -41,7 +41,7 @@ specialEffects.pointillism = function(el) {
       obj.lastTimeStamp = timeStamp;
 
       obj.ctx.fillStyle="black";
-      obj.ctx.rect(0, obj.y, obj.w, obj.d);
+      obj.ctx.rect(0, 0, obj.w, obj.h);
       obj.ctx.fill();
 
       while (obj.y < obj.h) {
