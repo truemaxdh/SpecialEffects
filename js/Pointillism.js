@@ -49,7 +49,7 @@ specialEffects.pointillism = function(el) {
         while (obj.x < obj.w) {
           // draw
           obj.ctx.beginPath();
-          var r = Math.floor(obj.d / 2);
+          var r = Math.floor(d / 2);
           var cx = cx1 = Math.floor(obj.x) + r;
           var cy = cy1 = Math.floor(obj.y) + r;
           if (cx >= obj.w) cx1 = obj.w - 1;
@@ -65,12 +65,11 @@ specialEffects.pointillism = function(el) {
         obj.x = 0;
         obj.y += d;
       }
+      obj.y = 0;
+      obj.sliceCnt += obj.plusMinus;
+      if (obj.sliceCnt <= 10) obj.plusMinus = 1;
+      if (obj.sliceCnt >= 100) obj.plusMinus = -1;
     }
-
-    obj.y = 0;
-    obj.sliceCnt += obj.plusMinus;
-    if (obj.sliceCnt <= 10) obj.plusMinus = 1;
-    if (obj.sliceCnt >= 100) obj.plusMinus = -1;
     
     requestAnimationFrame(obj.drawFrm);
   }
