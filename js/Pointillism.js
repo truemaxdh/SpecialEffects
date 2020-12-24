@@ -31,7 +31,7 @@ specialEffects.pointillism = function(el) {
     var h = obj.imgOri.height * scale;
     var l = (obj.w - w) / 2;
     var t = (obj.h - h) / 2;
-    obj.ctx.fillStyle="white";
+    obj.ctx.fillStyle="beige";
     obj.ctx.rect(0, 0, obj.w, obj.h);
     obj.ctx.fill();
     obj.ctx.drawImage(obj.imgOri, l, t, w, h);
