@@ -20,7 +20,8 @@ specialEffects.pointillism = function(el) {
   obj.h =cnv.height;
   obj.x = 0;
   obj.y = 0;
-  obj.d = Math.max(obj.w, obj.h) / 25;
+  obj.sliceCnt = 25;
+  obj.plusMinus = 1;
   obj.lastTimeStamp = null;
   obj.imgOri = new Image();
   obj.imgOri.src = "images/20170727_130136.jpg";
@@ -43,7 +44,7 @@ specialEffects.pointillism = function(el) {
       obj.ctx.fillStyle="black";
       obj.ctx.rect(0, 0, obj.w, obj.h);
       obj.ctx.fill();
-
+      var d = Math.max(obj.w, obj.h) / obj.sliceCnt;
       while (obj.y < obj.h) {
         while (obj.x < obj.w) {
           // draw
@@ -58,16 +59,18 @@ specialEffects.pointillism = function(el) {
           obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
           obj.ctx.fill();
 
-          obj.x += obj.d;
+          obj.x += d;
         }
       
         obj.x = 0;
-        obj.y += obj.d;
+        obj.y += d;
       }
     }
 
     obj.y = 0;
-    obj.d = Math.max(obj.w, obj.h) / (10 + Math.random() * 90);
+    obj.sliceCnt += obj.plusMinus;
+    if (obj.sliceCnt <= 10) obj.plusMinus = 1;
+    if (obj.sliceCnt >= 100) obj.plusMinus = -1;
     
     requestAnimationFrame(obj.drawFrm);
   }
