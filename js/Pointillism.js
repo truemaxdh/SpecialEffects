@@ -71,7 +71,7 @@ specialEffects.pointillism = function(el) {
       obj.y = 0;
       obj.sliceCnt += obj.plusMinus;
       if (obj.sliceCnt <= 10) obj.plusMinus = 1;
-      if (obj.sliceCnt >= 100) obj.plusMinus = -1;
+      if (obj.sliceCnt >= 150) obj.plusMinus = -1;
     }
     
     requestAnimationFrame(obj.drawFrm);
