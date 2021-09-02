@@ -2,7 +2,7 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects = {};
 }
 
-specialEffects.pointillism = function(el) {
+specialEffects.smoke = function(el) {
   console.log(el.style);
   
   var cnv = document.createElement("CANVAS");
@@ -14,7 +14,7 @@ specialEffects.pointillism = function(el) {
   cnv.height = cnv.style.height.replace("px","");
   el.appendChild(cnv);
 
-  var obj = this.pointillism;
+  var obj = this.smoke;
   obj.ctx = cnv.getContext("2d");
   obj.w = cnv.width;
   obj.h =cnv.height;
