@@ -52,7 +52,7 @@ specialEffects.pointillism = function(el) {
         while (obj.x < obj.w) {
           // draw
           obj.ctx.beginPath();
-          var r = Math.floor(d / 2);
+          var r = Math.ceil(d / 2);
           var cx = cx1 = Math.floor(obj.x) + r;
           var cy = cy1 = Math.floor(obj.y) + r;
           if (cx >= obj.w) cx1 = obj.w - 1;
