@@ -24,7 +24,7 @@ specialEffects.pointillism = function(el) {
   obj.plusMinus = 1;
   obj.lastTimeStamp = null;
   obj.imgOri = new Image();
-  obj.imgOri.src = "images/20170727_130136.jpg";
+  obj.imgOri.src = "images/wallpaperbetter.jpg";
   obj.imgOri.onload = function() {
     var scale = Math.min(obj.w / obj.imgOri.width, obj.h / obj.imgOri.height);
     var w = obj.imgOri.width * scale;
@@ -41,7 +41,7 @@ specialEffects.pointillism = function(el) {
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-    if ((timeStamp - obj.lastTimeStamp) > 700) {
+    if ((timeStamp - obj.lastTimeStamp) > 400) {
       obj.lastTimeStamp = timeStamp;
 
       obj.ctx.fillStyle="black";
