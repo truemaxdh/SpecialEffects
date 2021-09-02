@@ -41,7 +41,7 @@ specialEffects.pointillism = function(el) {
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-    if ((timeStamp - obj.lastTimeStamp) > 400) {
+    if ((timeStamp - obj.lastTimeStamp) > 250) {
       obj.lastTimeStamp = timeStamp;
 
       obj.ctx.fillStyle="black";
