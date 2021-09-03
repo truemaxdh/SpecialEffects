@@ -37,7 +37,8 @@ specialEffects.smoke = function(el) {
     }
     this.render = function(ctx) {
       ctx.beginPath();
-      ctx.fillStyle="white";
+      ctx.lineWidth = 3;
+      ctx.strokeStyle="white";
       ctx.moveTo(this.cx, this.cy);
       ctx.lineTo(this.cx + this.f_x * 1000, this.cy + this.f_y * 1000);
       ctx.stroke();
