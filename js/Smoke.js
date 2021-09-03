@@ -22,9 +22,9 @@ specialEffects.smoke = function(el) {
   obj.cy = cnv.height / 2;
   obj.lastTimeStamp = null;
   
-  let Particle = function(particles) {
-    this.x = obj.cx;
-    this.y = obj.cy;
+  let Particle = function(x, y, particles) {
+    this.x = x;
+    this.y = y;
     this.r = 4;
     this.acc_x = 0;
     this.acc_y = 0;
@@ -50,10 +50,12 @@ specialEffects.smoke = function(el) {
     }
   }
   
-  let ParticleSystem = function() {
+  let ParticleSystem = function(cx, cy) {
+    this.cx = cx;
+    this.cy = cy;
     this.particles = [];
     this.addParticle = function() {
-      this.particles.push(new Particle());
+      this.particles.push(new Particle(this.cx, this.cy, this.particles));
       console.log(this.particles.length);
     }
     this.applyForce = function(f_x, f_y) {
