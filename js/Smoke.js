@@ -19,7 +19,7 @@ specialEffects.smoke = function(el) {
   obj.w = cnv.width;
   obj.h = cnv.height;
   obj.cx = cnv.width / 2;
-  obj.cy = cnv.height / 2;
+  obj.cy = cnv.height * 4 / 5;
   obj.lastTimeStamp = null;
   
   let Particle = function(x, y, particles) {
@@ -31,7 +31,7 @@ specialEffects.smoke = function(el) {
     this.vel_x = Math.random() * 0.5 - 0.25;
     this.vel_y = -0.4 - Math.random() * 0.6;
     this.m = 1;
-    this.lifeSpan = 200;
+    this.lifeSpan = 1000;
     this.particles = particles;
     this.applyForce = function(f_x, f_y) {
       this.acc_x += f_x / this.m;
@@ -83,7 +83,7 @@ specialEffects.smoke = function(el) {
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-    if ((timeStamp - obj.lastTimeStamp) > 30) {
+    if ((timeStamp - obj.lastTimeStamp) > 20) {
       obj.lastTimeStamp = timeStamp;
 
       obj.ctx.fillStyle="black";
