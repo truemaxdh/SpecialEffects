@@ -22,6 +22,21 @@ specialEffects.smoke = function(el) {
   obj.cy = cnv.height * 4 / 5;
   obj.lastTimeStamp = null;
   
+  let Wind = function() {
+    this.f_x = 0;
+    this.f_y = 0;
+    this.f_max = 5;
+    this.f_min = -5;
+    this.update = function() {
+      this.f_x += Math.random() * 0.1 - 0.05;
+      this.f_y += Math.random() * 0.1 - 0.05;
+      if (this.f_x > this.f_max) this.f_x = this.f_max;
+      if (this.f_x < this.f_min) this.f_x = this.f_min;
+      if (this.f_y > this.f_max) this.f_y = this.f_max;
+      if (this.f_y < this.f_min) this.f_y = this.f_min;
+    }
+  }
+  
   let Particle = function(x, y, particles) {
     this.x = x;
     this.y = y;
@@ -80,6 +95,7 @@ specialEffects.smoke = function(el) {
   }
   
   obj.particleSystem = new ParticleSystem(obj.cx, obj.cy);
+  obj.wind = new Wind();
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
@@ -92,6 +108,7 @@ specialEffects.smoke = function(el) {
       
       obj.particleSystem.addParticle();
       obj.particleSystem.render(obj.ctx);
+      obj.particleSystem.applyForce(obj.wind.f_x, obj.wind.f_y);
       obj.particleSystem.update();
     }
     
