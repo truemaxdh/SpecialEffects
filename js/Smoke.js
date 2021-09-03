@@ -53,17 +53,17 @@ specialEffects.smoke = function(el) {
       console.log(this.particles.length);
     }
     this.applyForce = function(f_x, f_y) {
-      for(let i = 0; i < particles.length; i++) {
+      for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].applyForce(f_x, f_y);
       }
     }
     this.update = function() {
-      for(let i = 0; i < particles.length; i++) {
+      for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].update();
       }
     }
     this.render = function() {
-      for(let i = 0; i < particles.length; i++) {
+      for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].render();
       }
     }
