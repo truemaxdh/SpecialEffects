@@ -35,6 +35,7 @@ specialEffects.smoke = function(el) {
       if (this.f_y > this.f_max) this.f_y = this.f_max;
       if (this.f_y < this.f_min) this.f_y = this.f_min;
     }
+    console.log(this.f_x + "," + this.f_y);
   }
   
   let Particle = function(x, y, particles) {
