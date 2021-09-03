@@ -45,6 +45,7 @@ specialEffects.smoke = function(el) {
       this.vel_y += this.acc_y;
     }
     this.render = function(ctx) {
+      ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
       ctx.fill();
     }
