@@ -26,6 +26,7 @@
     <script src="js/FierySun.js"></script>
     <script src="js/FallingSnows.js"></script>
     <script src="js/Pointillism.js"></script>
+    <script src="js/Smoke.js"></script>
     
     <script>
       function demo_scratchMosaic() {
@@ -86,6 +87,12 @@
         specialEffects.pointillism(el);
       }
       
+      function demo_smoke() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.smoke(el);
+      }
+      
       const onLoadEx = function() {
         var _href = window.location.href;
         var _split = _href.split("#");
@@ -113,6 +120,7 @@
       <a href="javascript:demo_fierySun();">FierySun</a>
       <a href="javascript:demo_fallingSnows();">FallingSnows</a>
       <a href="javascript:demo_pointillism();">Pointillism</a>
+      <a href="javascript:demo_smoke();">Pointillism</a>
       
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
