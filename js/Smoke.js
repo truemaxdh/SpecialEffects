@@ -66,6 +66,7 @@ specialEffects.smoke = function(el) {
       for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].render();
       }
+      obj.ctx.fill();
     }
   }
   
