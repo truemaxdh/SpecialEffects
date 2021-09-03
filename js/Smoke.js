@@ -49,7 +49,9 @@ specialEffects.smoke = function(el) {
   let ParticleSystem = function() {
     this.particles = [];
     this.addParticle = function() {
+      console.log(particles.length);
       particles.push(new Particle());
+      console.log(particles.length);
     }
     this.applyForce = function(f_x, f_y) {
       for(let i = 0; i < particles.length; i++) {
