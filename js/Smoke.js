@@ -46,6 +46,7 @@ specialEffects.smoke = function(el) {
     }
     this.render = function(ctx) {
       ctx.beginPath();
+      ctx.fillStyle="green";
       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
       ctx.fill();
     }
@@ -73,14 +74,13 @@ specialEffects.smoke = function(el) {
       }
     }
     this.render = function(ctx) {
-      ctx.fillStyle="green";
       for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].render(ctx);
       }
     }
   }
   
-  obj.particleSystem = new ParticleSystem();
+  obj.particleSystem = new ParticleSystem(obj.cx, obj.cy);
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
