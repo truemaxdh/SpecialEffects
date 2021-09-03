@@ -23,8 +23,8 @@ specialEffects.smoke = function(el) {
   let Wind = function(x, y) {
     this.f_x = 0;
     this.f_y = 0;
-    this.f_max = 0.01;
-    this.f_min = -0.01;
+    this.f_max = 0.001;
+    this.f_min = -0.001;
     this.cx = x;
     this.cy = y;
     this.update = function(ctx) {
@@ -40,7 +40,7 @@ specialEffects.smoke = function(el) {
       ctx.lineWidth = 3;
       ctx.strokeStyle="white";
       ctx.moveTo(this.cx, this.cy);
-      ctx.lineTo(this.cx + this.f_x * 1000, this.cy + this.f_y * 1000);
+      ctx.lineTo(this.cx + this.f_x * 100000, this.cy + this.f_y * 100000);
       ctx.stroke();
     }
   }
