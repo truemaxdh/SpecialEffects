@@ -17,61 +17,69 @@ specialEffects.smoke = function(el) {
   var obj = this.smoke;
   obj.ctx = cnv.getContext("2d");
   obj.w = cnv.width;
-  obj.h =cnv.height;
-  obj.x = 0;
-  obj.y = 0;
-  obj.sliceCnt = 150;
-  obj.plusMinus = -1;
+  obj.h = cnv.height;
+  obj.cx = cnv.width / 2;
+  obj.cy = cnv.height / 2;
   obj.lastTimeStamp = null;
-  obj.imgOri = new Image();
-  obj.imgOri.src = "images/wallpaperbetter.jpg";
-  obj.imgOri.onload = function() {
-    var scale = Math.min(obj.w / obj.imgOri.width, obj.h / obj.imgOri.height);
-    var w = obj.imgOri.width * scale;
-    var h = obj.imgOri.height * scale;
-    var l = (obj.w - w) / 2;
-    var t = (obj.h - h) / 2;
-    obj.ctx.fillStyle="beige";
-    obj.ctx.rect(0, 0, obj.w, obj.h);
-    obj.ctx.fill();
-    obj.ctx.drawImage(obj.imgOri, l, t, w, h);
-    obj.imgData = obj.ctx.getImageData(0, 0, obj.w, obj.h).data;
-    obj.drawFrm();
+  obj.particleSystem = new ParticleSystem();
+  let ParticleSystem = function() {
+    this.particles = [];
+    this.addParticle = function() {
+      particles.push(new Particle());
+    }
+    this.applyForce = function(f_x, f_y) {
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].applyForce(f_x, f_y);
+      }
+    }
+    this.update = function() {
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].update();
+      }
+    }
+    this.render = function() {
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].render();
+      }
+    }
   }
   
+  let Particle = function() {
+    this.x = obj.cx;
+    this.y = obj.cy;
+    this.r = 4;
+    this.acc_x = 0;
+    this.acc_y = 0;
+    this.vel_x = Math.random() * 0.1 - 0.05;
+    this.vel_y = -0.2;
+    this.m = 1;
+    this.applyForce = function(f_x, f_y) {
+      this.acc_x += f_x / this.m;
+      this.acc_y += f_y / this.m;
+    }
+    this.update = function() {
+      this.x += this.vel_x;
+      this.y += this.vel_y;
+      this.vel_x += this.acc_x;
+      this.vel_y += this.acc_y;
+    }
+    this.render = function() {
+      obj.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    }
+  }
+    
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-    if ((timeStamp - obj.lastTimeStamp) > 250) {
+    if ((timeStamp - obj.lastTimeStamp) > 30) {
       obj.lastTimeStamp = timeStamp;
 
       obj.ctx.fillStyle="black";
       obj.ctx.rect(0, 0, obj.w, obj.h);
       obj.ctx.fill();
-      var d = Math.max(obj.w, obj.h) / obj.sliceCnt;
-      while (obj.y < obj.h) {
-        while (obj.x < obj.w) {
-          // draw
-          obj.ctx.beginPath();
-          var r = Math.floor(d / 2);
-          var cx = cx1 = Math.floor(obj.x) + r;
-          var cy = cy1 = Math.floor(obj.y) + r;
-          if (cx >= obj.w) cx1 = obj.w - 1;
-          if (cy >= obj.h) cy1 = obj.h - 1;
-          var pos = 4 * (cy1 * obj.w + cx1);
-          obj.ctx.fillStyle="rgb(" + obj.imgData[pos++] + "," + obj.imgData[pos++] + "," + obj.imgData[pos++] + ")";
-          obj.ctx.arc(cx, cy, r, 0, 2 * Math.PI);
-          obj.ctx.fill();
-
-          obj.x += d;
-        }
-      
-        obj.x = 0;
-        obj.y += d;
-      }
-      obj.y = 0;
-      obj.sliceCnt += obj.plusMinus;
-      if (obj.sliceCnt <= 10) obj.plusMinus = 1;
-      if (obj.sliceCnt >= 150) obj.plusMinus = -1;
+      obj.ctx.fillStyle="white";
+      obj.particleSystem.addParticle();
+      obj.render();
+      obj.update();
     }
     
     requestAnimationFrame(obj.drawFrm);
