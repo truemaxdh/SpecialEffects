@@ -22,7 +22,7 @@ specialEffects.smoke = function(el) {
   obj.cy = cnv.height / 2;
   obj.lastTimeStamp = null;
   
-  let Particle = function() {
+  let Particle = function(particles) {
     this.x = obj.cx;
     this.y = obj.cy;
     this.r = 4;
@@ -31,11 +31,14 @@ specialEffects.smoke = function(el) {
     this.vel_x = Math.random() * 0.1 - 0.05;
     this.vel_y = -0.2;
     this.m = 1;
+    this.lifeCnt = 0;
+    this.particles = particles;
     this.applyForce = function(f_x, f_y) {
       this.acc_x += f_x / this.m;
       this.acc_y += f_y / this.m;
     }
     this.update = function() {
+      ++lifeCnt;
       this.x += this.vel_x;
       this.y += this.vel_y;
       this.vel_x += this.acc_x;
@@ -43,6 +46,7 @@ specialEffects.smoke = function(el) {
     }
     this.render = function() {
       obj.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+      obj.ctx.fill();
     }
   }
   
@@ -58,15 +62,18 @@ specialEffects.smoke = function(el) {
       }
     }
     this.update = function() {
-      for(let i = 0; i < this.particles.length; i++) {
+      for(let i = this.particles.length - 1; i >= 0; i--) {
         this.particles[i].update();
+        if (particles[i].lifeCnt >= 100) {
+          this.particles.splice(i, 1);
+        }
       }
     }
     this.render = function() {
+      obj.ctx.fillStyle="white";
       for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].render();
       }
-      obj.ctx.fill();
     }
   }
   
@@ -80,7 +87,7 @@ specialEffects.smoke = function(el) {
       obj.ctx.fillStyle="black";
       obj.ctx.rect(0, 0, obj.w, obj.h);
       obj.ctx.fill();
-      obj.ctx.fillStyle="white";
+      
       obj.particleSystem.addParticle();
       obj.particleSystem.render();
       obj.particleSystem.update();
