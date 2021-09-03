@@ -89,4 +89,5 @@ specialEffects.smoke = function(el) {
     requestAnimationFrame(obj.drawFrm);
   }
   
+  requestAnimationFrame(obj.drawFrm);
 }
