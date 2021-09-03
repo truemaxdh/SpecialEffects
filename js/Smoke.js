@@ -31,14 +31,14 @@ specialEffects.smoke = function(el) {
     this.vel_x = Math.random() * 0.1 - 0.05;
     this.vel_y = -0.2;
     this.m = 1;
-    this.lifeCnt = 0;
+    this.lifeSpan = 100;
     this.particles = particles;
     this.applyForce = function(f_x, f_y) {
       this.acc_x += f_x / this.m;
       this.acc_y += f_y / this.m;
     }
     this.update = function() {
-      ++lifeCnt;
+      --this.lifeSpan;
       this.x += this.vel_x;
       this.y += this.vel_y;
       this.vel_x += this.acc_x;
@@ -64,7 +64,7 @@ specialEffects.smoke = function(el) {
     this.update = function() {
       for(let i = this.particles.length - 1; i >= 0; i--) {
         this.particles[i].update();
-        if (particles[i].lifeCnt >= 100) {
+        if (particles[i].lifeSpan <= 0) {
           this.particles.splice(i, 1);
         }
       }
