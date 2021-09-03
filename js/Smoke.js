@@ -80,8 +80,8 @@ specialEffects.smoke = function(el) {
       obj.ctx.fill();
       obj.ctx.fillStyle="white";
       obj.particleSystem.addParticle();
-      obj.render();
-      obj.update();
+      obj.particleSystem.render();
+      obj.particleSystem.update();
     }
     
     requestAnimationFrame(obj.drawFrm);
