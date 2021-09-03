@@ -44,9 +44,9 @@ specialEffects.smoke = function(el) {
       this.vel_x += this.acc_x;
       this.vel_y += this.acc_y;
     }
-    this.render = function() {
-      obj.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-      obj.ctx.fill();
+    this.render = function(ctx) {
+      ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+      ctx.fill();
     }
   }
   
@@ -69,10 +69,10 @@ specialEffects.smoke = function(el) {
         }
       }
     }
-    this.render = function() {
-      obj.ctx.fillStyle="white";
+    this.render = function(ctx) {
+      ctx.fillStyle="white";
       for(let i = 0; i < this.particles.length; i++) {
-        this.particles[i].render();
+        this.particles[i].render(ctx);
       }
     }
   }
@@ -89,7 +89,7 @@ specialEffects.smoke = function(el) {
       obj.ctx.fill();
       
       obj.particleSystem.addParticle();
-      obj.particleSystem.render();
+      obj.particleSystem.render(obj.ctx);
       obj.particleSystem.update();
     }
     
