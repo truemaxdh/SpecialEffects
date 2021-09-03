@@ -72,7 +72,7 @@ specialEffects.smoke = function(el) {
       }
     }
     this.render = function(ctx) {
-      ctx.fillStyle="white";
+      ctx.fillStyle="green";
       for(let i = 0; i < this.particles.length; i++) {
         this.particles[i].render(ctx);
       }
