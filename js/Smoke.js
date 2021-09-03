@@ -102,7 +102,7 @@ specialEffects.smoke = function(el) {
   }
   
   obj.particleSystem = new ParticleSystem(cnv.width / 2, cnv.height * 4 / 5);
-  obj.wind = new Wind(cnv.width / 2, cnv.height / 2);
+  obj.wind = new Wind(cnv.width / 2, cnv.height / 5);
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
