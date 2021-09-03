@@ -36,16 +36,17 @@ specialEffects.smoke = function(el) {
       if (this.f_y < this.f_min) this.f_y = this.f_min;
     }
     this.render = function(ctx) {
-      let lineToX = this.cx + this.f_x * 200000;
-      let lineToY = this.cy + this.f_y * 200000;
+      let lineToX = this.cx + this.f_x * 300000;
+      let lineToY = this.cy + this.f_y * 300000;
       ctx.beginPath();
       ctx.lineWidth = 1;
       ctx.strokeStyle="white";
-      ctx.arc(this.cx, this.cy, 2, 0, 2 * Math.PI);
+      ctx.arc(this.cx, this.cy, 4, 0, 4 * Math.PI);
       ctx.moveTo(this.cx, this.cy);
       ctx.lineTo(lineToX, lineToY);
       ctx.arc(lineToX, lineToY, 2, 0, 2 * Math.PI);
       ctx.stroke();
+      ctx.fill();
     }
   }
   
