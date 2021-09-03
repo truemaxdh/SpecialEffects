@@ -40,8 +40,8 @@ specialEffects.smoke = function(el) {
       let lineToY = this.cy + this.f_y * 300000;
       ctx.beginPath();
       ctx.lineWidth = 1;
-      ctx.strokeStyle="lightblue";
-      ctx.fillStyle="blue";
+      ctx.strokeStyle="white";
+      ctx.fillStyle="white";
       ctx.arc(this.cx, this.cy, 4, 0, 4 * Math.PI);
       ctx.moveTo(this.cx, this.cy);
       ctx.lineTo(lineToX, lineToY);
