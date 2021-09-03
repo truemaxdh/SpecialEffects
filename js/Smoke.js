@@ -21,28 +21,6 @@ specialEffects.smoke = function(el) {
   obj.cx = cnv.width / 2;
   obj.cy = cnv.height / 2;
   obj.lastTimeStamp = null;
-  obj.particleSystem = new ParticleSystem();
-  let ParticleSystem = function() {
-    this.particles = [];
-    this.addParticle = function() {
-      particles.push(new Particle());
-    }
-    this.applyForce = function(f_x, f_y) {
-      for(let i = 0; i < particles.length; i++) {
-        particles[i].applyForce(f_x, f_y);
-      }
-    }
-    this.update = function() {
-      for(let i = 0; i < particles.length; i++) {
-        particles[i].update();
-      }
-    }
-    this.render = function() {
-      for(let i = 0; i < particles.length; i++) {
-        particles[i].render();
-      }
-    }
-  }
   
   let Particle = function() {
     this.x = obj.cx;
@@ -67,7 +45,31 @@ specialEffects.smoke = function(el) {
       obj.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
     }
   }
-    
+  
+  let ParticleSystem = function() {
+    this.particles = [];
+    this.addParticle = function() {
+      particles.push(new Particle());
+    }
+    this.applyForce = function(f_x, f_y) {
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].applyForce(f_x, f_y);
+      }
+    }
+    this.update = function() {
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].update();
+      }
+    }
+    this.render = function() {
+      for(let i = 0; i < particles.length; i++) {
+        particles[i].render();
+      }
+    }
+  }
+  
+  obj.particleSystem = new ParticleSystem();
+  
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
     if ((timeStamp - obj.lastTimeStamp) > 30) {
