@@ -64,7 +64,7 @@ specialEffects.smoke = function(el) {
     this.update = function() {
       for(let i = this.particles.length - 1; i >= 0; i--) {
         this.particles[i].update();
-        if (particles[i].lifeSpan <= 0) {
+        if (this.particles[i].lifeSpan <= 0) {
           this.particles.splice(i, 1);
         }
       }
