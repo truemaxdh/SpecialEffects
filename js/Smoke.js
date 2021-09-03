@@ -25,13 +25,13 @@ specialEffects.smoke = function(el) {
   let Particle = function(x, y, particles) {
     this.x = x;
     this.y = y;
-    this.r = 8;
+    this.r = 12;
     this.acc_x = 0;
     this.acc_y = 0;
-    this.vel_x = Math.random() * 0.1 - 0.05;
-    this.vel_y = -0.2;
+    this.vel_x = Math.random() * 0.3 - 0.15;
+    this.vel_y = -0.5;
     this.m = 1;
-    this.lifeSpan = 100;
+    this.lifeSpan = 200;
     this.particles = particles;
     this.applyForce = function(f_x, f_y) {
       this.acc_x += f_x / this.m;
@@ -58,7 +58,6 @@ specialEffects.smoke = function(el) {
     this.particles = [];
     this.addParticle = function() {
       this.particles.push(new Particle(this.cx, this.cy, this.particles));
-      console.log(this.particles.length);
     }
     this.applyForce = function(f_x, f_y) {
       for(let i = 0; i < this.particles.length; i++) {
