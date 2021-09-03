@@ -18,24 +18,30 @@ specialEffects.smoke = function(el) {
   obj.ctx = cnv.getContext("2d");
   obj.w = cnv.width;
   obj.h = cnv.height;
-  obj.cx = cnv.width / 2;
-  obj.cy = cnv.height * 4 / 5;
   obj.lastTimeStamp = null;
   
-  let Wind = function() {
+  let Wind = function(x, y) {
     this.f_x = 0;
     this.f_y = 0;
     this.f_max = 0.01;
     this.f_min = -0.01;
-    this.update = function() {
+    this.cx = x;
+    this.cy = y;
+    this.update = function(ctx) {
       this.f_x += Math.random() * 0.00001 - 0.000005;
       this.f_y += Math.random() * 0.00001 - 0.000005;
       if (this.f_x > this.f_max) this.f_x = this.f_max;
       if (this.f_x < this.f_min) this.f_x = this.f_min;
       if (this.f_y > this.f_max) this.f_y = this.f_max;
       if (this.f_y < this.f_min) this.f_y = this.f_min;
-      console.log(this.f_x + "," + this.f_y);
-    }    
+    }
+    this.render = function(ctx) {
+      ctx.beginPath();
+      ctx.fillStyle="white";
+      ctx.moveTo(this.cx, this.cy);
+      ctx.lineTo(this.cx + this.f_x * 1000, this.cy + this.f_y * 1000);
+      ctx.stroke();
+    }
   }
   
   let Particle = function(x, y, particles) {
@@ -95,8 +101,8 @@ specialEffects.smoke = function(el) {
     }
   }
   
-  obj.particleSystem = new ParticleSystem(obj.cx, obj.cy);
-  obj.wind = new Wind();
+  obj.particleSystem = new ParticleSystem(cnv.width / 2, cnv.height * 4 / 5);
+  obj.wind = new Wind(cnv.width / 2, cnv.height / 2);
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
@@ -109,6 +115,8 @@ specialEffects.smoke = function(el) {
       
       obj.particleSystem.addParticle();
       obj.particleSystem.render(obj.ctx);
+      obj.wind.render(obj.ctx);
+      
       obj.particleSystem.applyForce(obj.wind.f_x, obj.wind.f_y);
       obj.particleSystem.update();
       obj.wind.update();
