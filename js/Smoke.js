@@ -29,7 +29,7 @@ specialEffects.smoke = function(el) {
     this.acc_x = 0;
     this.acc_y = 0;
     this.vel_x = Math.random() * 0.3 - 0.15;
-    this.vel_y = -0.5;
+    this.vel_y = -0.5 + Math.random() * 0.2 - 0.1;
     this.m = 1;
     this.lifeSpan = 200;
     this.particles = particles;
@@ -46,7 +46,7 @@ specialEffects.smoke = function(el) {
     }
     this.render = function(ctx) {
       ctx.beginPath();
-      ctx.fillStyle="rgba(255, 255, 255, 0.3)";
+      ctx.fillStyle="rgba(255, 255, 255, 0.1)";
       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
       ctx.fill();
     }
