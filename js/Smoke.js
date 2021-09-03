@@ -25,7 +25,7 @@ specialEffects.smoke = function(el) {
   let Particle = function(x, y, particles) {
     this.x = x;
     this.y = y;
-    this.r = 4;
+    this.r = 8;
     this.acc_x = 0;
     this.acc_y = 0;
     this.vel_x = Math.random() * 0.1 - 0.05;
@@ -46,7 +46,7 @@ specialEffects.smoke = function(el) {
     }
     this.render = function(ctx) {
       ctx.beginPath();
-      ctx.fillStyle="green";
+      ctx.fillStyle="rgba(255, 255, 255, 0.3)";
       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
       ctx.fill();
     }
