@@ -34,8 +34,8 @@ specialEffects.smoke = function(el) {
       if (this.f_x < this.f_min) this.f_x = this.f_min;
       if (this.f_y > this.f_max) this.f_y = this.f_max;
       if (this.f_y < this.f_min) this.f_y = this.f_min;
-    }
-    console.log(this.f_x + "," + this.f_y);
+      console.log(this.f_x + "," + this.f_y);
+    }    
   }
   
   let Particle = function(x, y, particles) {
@@ -111,6 +111,7 @@ specialEffects.smoke = function(el) {
       obj.particleSystem.render(obj.ctx);
       obj.particleSystem.applyForce(obj.wind.f_x, obj.wind.f_y);
       obj.particleSystem.update();
+      obj.wind.update();
     }
     
     requestAnimationFrame(obj.drawFrm);
