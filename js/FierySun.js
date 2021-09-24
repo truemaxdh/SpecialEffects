@@ -2,18 +2,6 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects = {};
 }
 
-// Bubbles
-function _point(cx, cy, r, dx, dy, c, gco, dur) {
-  this.cx = cx;
-  this.cy = cy;
-  this.r = r;
-  this.dx = dx;
-  this.dy = dy;
-  this.color = c;
-  this.gco = gco;
-  this.duration = dur;
-}
-
 specialEffects.fierySun = function(el) {
   console.log(el.style);
   
