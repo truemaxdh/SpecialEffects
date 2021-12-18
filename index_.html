@@ -1,5 +1,15 @@
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81183833-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-81183833-2');
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>SpecialEffects - Samples of special effects based on HTML and javascript</title>
@@ -8,10 +18,18 @@
     <link rel="icon" href="https://truemaxdh.github.io/icon.png" type="image/png">
     <link rel="stylesheet" href="https://truemaxdh.github.io/Style/skin.css">
     
+    <script src="js/common.js"></script>
     <script src="js/ScratchMosaic.js"></script>
     <script src="js/LighterOverlay.js"></script>
     <script src="js/Afterimage.js"></script>
     <script src="js/Fireworks.js"></script>
+    <script src="js/Aurora.js"></script>
+    <script src="js/FierySun.js"></script>
+    <script src="js/FallingSnows.js"></script>
+    <script src="js/Pointillism.js"></script>
+    <script src="js/Smoke.js"></script>
+    <script src="js/SeaWave.js"></script>
+    
     <script>
       function demo_scratchMosaic() {
         var el = document.getElementById("board");
@@ -47,11 +65,47 @@
         specialEffects.fireworks(el);
       }
       
-      window.onload = function() {
+      function demo_aurora() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.aurora(el);
+      }
+            
+      function demo_fierySun() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.fierySun(el);
+      }
+      
+      function demo_fallingSnows() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.fallingSnows(el);
+      }
+            
+      function demo_pointillism() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.pointillism(el);
+      }
+      
+      function demo_smoke() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.smoke(el);
+      }
+      
+      function demo_seaWave() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.seaWave(el);
+      }
+      
+      const onLoadEx = function() {
         var _href = window.location.href;
         var _split = _href.split("#");
         if (_split.length < 2) {
-          demo_fireworks();
+          demo_scratchMosaic();
         } else {
           eval("demo_" + _split[1] + "();" );
         }        
@@ -66,15 +120,33 @@
     <center>
       {{content}}
       <br>
-      <a href="javascript:demo_scratchMosaic();">demo_scratchMosaic</a>
-      <a href="javascript:demo_lighterOverlay();">demo_lighterOverlay</a>
-      <a href="javascript:demo_afterimage();">demo_afterimage</a>
-      <a href="javascript:demo_fireworks();">demo_fireworks</a>
+      <a href="javascript:demo_scratchMosaic();">ScratchMosaic</a>
+      <a href="javascript:demo_lighterOverlay();">LighterOverlay</a>
+      <a href="javascript:demo_afterimage();">Afterimage</a>
+      <a href="javascript:demo_fireworks();">Fireworks</a>
+      <a href="javascript:demo_aurora();">Aurora</a>
+      <a href="javascript:demo_fierySun();">FierySun</a>
+      <a href="javascript:demo_fallingSnows();">FallingSnows</a>
+      <a href="javascript:demo_pointillism();">Pointillism</a>
+      <a href="javascript:demo_smoke();">Smoke</a>
+      <a href="javascript:demo_seaWave();">SeaWave</a>
+      
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
       <a class="normalBtn" href="https://github.com/truemaxdh/SpecialEffects">GitHub</a>
     </center>
     <br>
     
+    <!--Google AdSense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- AutoResponse -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7307479428475282"
+         data-ad-slot="8718898251"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </body>
 </html>

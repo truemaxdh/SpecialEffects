@@ -18,6 +18,7 @@
     <link rel="icon" href="https://truemaxdh.github.io/icon.png" type="image/png">
     <link rel="stylesheet" href="https://truemaxdh.github.io/Style/skin.css">
     
+    <script src="js/common.js"></script>
     <script src="js/ScratchMosaic.js"></script>
     <script src="js/LighterOverlay.js"></script>
     <script src="js/Afterimage.js"></script>
@@ -27,6 +28,7 @@
     <script src="js/FallingSnows.js"></script>
     <script src="js/Pointillism.js"></script>
     <script src="js/Smoke.js"></script>
+    <script src="js/SeaWave.js"></script>
     
     <script>
       function demo_scratchMosaic() {
@@ -93,6 +95,12 @@
         specialEffects.smoke(el);
       }
       
+      function demo_seaWave() {
+        var el = document.getElementById("board");
+        el.innerHTML = "";
+        specialEffects.seaWave(el);
+      }
+      
       const onLoadEx = function() {
         var _href = window.location.href;
         var _split = _href.split("#");
@@ -121,6 +129,7 @@
       <a href="javascript:demo_fallingSnows();">FallingSnows</a>
       <a href="javascript:demo_pointillism();">Pointillism</a>
       <a href="javascript:demo_smoke();">Smoke</a>
+      <a href="javascript:demo_seaWave();">SeaWave</a>
       
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
