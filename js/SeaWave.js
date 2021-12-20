@@ -1,3 +1,32 @@
+// unitWave
+class _wave {
+  constructor(h) {
+    this.h = h;
+    this.cy = Math.random() * h;
+    this.r = getRndInt(h * 0.2, h);
+    this.dy = ((Math.random() < 0.5) ? 1 : -1) * getRndInt(h * 0.0001, h * 0.01);
+  }
+
+  move() {
+    this.cy += this.dy;
+    this.cy %= this.h;
+    if (Math.random() < 0.1) {
+      this.dy *= -1;
+    }
+  }
+  
+  render(ctx) {
+    const w = ctx.canvas.width;
+    let grd = ctx.createLinearGradient(0, 0, 0, this.r * 2);
+    grd.addColorStop(0, "rgba(0,0,255,0.1)");
+    grd.addColorStop(0.5, "rgba(255,255,255,0.1)");
+    grd.addColorStop(1, "rgba(0,0,255,0.1)");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, this.cy - this.r, w, this.r * 2);
+  }
+}
+
+
 if (typeof specialEffects === 'undefined' || !specialEffects) {
     specialEffects = {};
   }
@@ -18,18 +47,13 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
     obj.ctx = cnv.getContext("2d");
     obj.w = cnv.width;
     obj.h = cnv.height;
-    obj.cnt = getRndInt(3, 10);
-    obj.divs = [];
+    obj.cnt = getRndInt(10, 50);
+    //obj.cnt = 1;
+    obj.waves = [];
     
     obj.init = ()=>{
-      const step = 1 / obj.cnt;
-    
-      while(obj.divs.length < obj.cnt) {
-        let div = {
-          relY : obj.divs.length * step,
-          dy : (Math.random() < 0.5) ? 1 : -1
-        }
-        obj.divs.push(div);
+      while(obj.waves.length < obj.cnt) {
+        obj.waves.push(new _wave(obj.h));
       }
     }
 
@@ -40,13 +64,10 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
         
         obj.ctx.fillStyle = "white";
         obj.ctx.fillRect(0, 0, obj.w, obj.h);
-        let grd = obj.ctx.createLinearGradient(0, 0, 0, obj.h);
-        grd.addColorStop(0, "rgba(0,0,255,1)");
-        obj.divs.forEach((div, i)=>{
-          grd.addColorStop(div.relY , (i % 2 == 0) ? "rgba(0,0,255,0.5)" : "rgba(0,0,255,1)");          
+        obj.waves.forEach((wave)=>{
+          wave.render(obj.ctx);
+          wave.move();
         });
-        obj.ctx.fillStyle = grd;
-        obj.ctx.fillRect(0, 0, obj.w, obj.h);
       }
     
       requestAnimationFrame(obj.drawFrm);
