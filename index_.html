@@ -27,88 +27,40 @@
     <script src="js/FierySun.js"></script>
     <script src="js/FallingSnows.js"></script>
     <script src="js/Pointillism.js"></script>
+    <script src="js/TearAndPaste.js"></script>
     <script src="js/Smoke.js"></script>
     <script src="js/SeaWave.js"></script>
     
     <script>
-      function demo_scratchMosaic() {
-        var el = document.getElementById("board");
+      function run(runName) {
         el.innerHTML = "";
-        specialEffects.scratchMosaic(
-          el,
-          "Special Effects Sample",
-          "20px Arial",
-          "darkorange",
-          "Scratch Mosaic",
-          "15px Arial",
-          "darkorange",
-          "black",
-          "lightskyblue"
-        );
-      }
-      
-      function demo_lighterOverlay() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.lighterOverlay(el, 200, "black");
-      }
-      
-      function demo_afterimage() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.afterimage(el);
-      }
-      
-      function demo_fireworks() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.fireworks(el);
-      }
-      
-      function demo_aurora() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.aurora(el);
-      }
-            
-      function demo_fierySun() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.fierySun(el);
-      }
-      
-      function demo_fallingSnows() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.fallingSnows(el);
-      }
-            
-      function demo_pointillism() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.pointillism(el);
-      }
-      
-      function demo_smoke() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.smoke(el);
-      }
-      
-      function demo_seaWave() {
-        var el = document.getElementById("board");
-        el.innerHTML = "";
-        specialEffects.seaWave(el);
-      }
-      
-      const onLoadEx = function() {
-        var _href = window.location.href;
-        var _split = _href.split("#");
-        if (_split.length < 2) {
-          demo_scratchMosaic();
+        if (runName == "scratchMosaic") {
+          specialEffects.scratchMosaic(
+            el,
+            "Special Effects Sample",
+            "20px Arial",
+            "darkorange",
+            "Scratch Mosaic",
+            "15px Arial",
+            "darkorange",
+            "black",
+            "lightskyblue"
+          );
         } else {
-          eval("demo_" + _split[1] + "();" );
-        }        
+          eval("specialEffects." + runName + "(el);" );
+        }
+      }
+      
+      let el;
+      const onLoadEx = function() {
+        el = document.getElementById("board");
+        let runName = "scratchMosaic";
+        const _href = window.location.href;
+        const _split = _href.split("#");
+        if (_split.length >= 2) {
+          runName = _split[1];
+        } 
+        run(runName);
       }
     </script>
 
@@ -120,16 +72,17 @@
     <center>
       {{content}}
       <br>
-      <a href="javascript:demo_scratchMosaic();">ScratchMosaic</a>
-      <a href="javascript:demo_lighterOverlay();">LighterOverlay</a>
-      <a href="javascript:demo_afterimage();">Afterimage</a>
-      <a href="javascript:demo_fireworks();">Fireworks</a>
-      <a href="javascript:demo_aurora();">Aurora</a>
-      <a href="javascript:demo_fierySun();">FierySun</a>
-      <a href="javascript:demo_fallingSnows();">FallingSnows</a>
-      <a href="javascript:demo_pointillism();">Pointillism</a>
-      <a href="javascript:demo_smoke();">Smoke</a>
-      <a href="javascript:demo_seaWave();">SeaWave</a>
+      <a href="javascript:run('scratchMosaic');">ScratchMosaic</a>
+      <a href="javascript:run('lighterOverlay');">LighterOverlay</a>
+      <a href="javascript:run('afterimage');">Afterimage</a>
+      <a href="javascript:run('fireworks');">Fireworks</a>
+      <a href="javascript:run('aurora');">Aurora</a>
+      <a href="javascript:run('fierySun');">FierySun</a>
+      <a href="javascript:run('fallingSnows');">FallingSnows</a>
+      <a href="javascript:run('pointillism');">Pointillism</a>
+      <a href="javascript:run('tearAndPaste');">TearAndPaste</a>
+      <a href="javascript:run('smoke');">Smoke</a>
+      <a href="javascript:run('seaWave');">SeaWave</a>
       
       <div id="board" style="width:800px; height:600px;"></div>
       <br>
