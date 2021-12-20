@@ -5,6 +5,10 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 specialEffects.fierySun = function(el) {
   console.log(el.style);
   
+  const obj = this.fierySun;
+  obj.objName = "fierySun";
+  this.runningObj = obj;
+
   var cnv = document.createElement("CANVAS");
   cnv.style.position = "relative";
   cnv.style.width = el.style.width;
@@ -63,5 +67,6 @@ specialEffects.fierySun.drawFrm = function(timeStamp) {
     obj.ctx.fill();
   }
 
-  requestAnimationFrame(specialEffects.fierySun.drawFrm);
+  if (specialEffects.runningObj.objName == obj.objName)
+    requestAnimationFrame(obj.drawFrm);
 }

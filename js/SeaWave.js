@@ -34,6 +34,10 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects.seaWave = function(el) {
     console.log(el.style);
     
+    const obj = this.seaWave;
+    obj.objName = "seaWave";
+    this.runningObj = obj;
+
     var cnv = document.createElement("CANVAS");
     cnv.style.position = "relative";
     cnv.style.width = el.style.width;
@@ -42,8 +46,7 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
     cnv.width = cnv.style.width.replace("px","");
     cnv.height = cnv.style.height.replace("px","");
     el.appendChild(cnv);
-  
-    const obj = this.seaWave; 
+    
     obj.ctx = cnv.getContext("2d");
     obj.w = cnv.width;
     obj.h = cnv.height;
@@ -70,7 +73,8 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
         });
       }
     
-      requestAnimationFrame(obj.drawFrm);
+      if (specialEffects.runningObj.objName == obj.objName)
+        requestAnimationFrame(obj.drawFrm);
     }
 
     obj.init();

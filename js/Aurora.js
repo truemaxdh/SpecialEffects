@@ -17,6 +17,10 @@ function _bubble(cx, cy, r, dx, dy, c, gco, dur) {
 specialEffects.aurora = function(el) {
   console.log(el.style);
   
+  const obj = this.aurora;
+  obj.objName = "aurora";
+  this.runningObj = obj;
+
   var cnv = document.createElement("CANVAS");
   cnv.style.position = "relative";
   cnv.style.width = el.style.width;
@@ -92,5 +96,6 @@ specialEffects.aurora.drawFrm = function(timeStamp) {
     }
   }
 
-  requestAnimationFrame(specialEffects.aurora.drawFrm);
+  if (specialEffects.runningObj.objName == obj.objName)
+    requestAnimationFrame(obj.drawFrm);
 }

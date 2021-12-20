@@ -4,6 +4,11 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 
 specialEffects.afterimage = function(el) {
   console.log(el.style);
+  
+  const obj = this.afterimage;
+  obj.objName = "afterimage";
+  this.runningObj = obj;
+
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
   cnv_bg.style.width = el.style.width;
@@ -32,7 +37,7 @@ specialEffects.afterimage = function(el) {
 };
   
 specialEffects.afterimage.drawFrm = function() {
-  var obj = specialEffects.afterimage;
+  const obj = specialEffects.afterimage;
   var ctx_bg = obj.ctx_bg;
 
   // ---------
@@ -58,6 +63,7 @@ specialEffects.afterimage.drawFrm = function() {
     obj.gco = (Math.random() < 0.5) ? 'source-over':'lighter';
     obj.speed = Math.random() * obj.w / 20 + 1;
   }
-  
-  requestAnimationFrame(specialEffects.afterimage.drawFrm);
+
+  if (specialEffects.runningObj.objName == obj.objName)
+    requestAnimationFrame(obj.drawFrm);
 }

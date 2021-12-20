@@ -2,8 +2,15 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
   specialEffects = {};
 }
 
-specialEffects.lighterOverlay = function(el, shapeCnt, bgColor) {
+specialEffects.lighterOverlay = function(el) {
   console.log(el.style);
+
+  const obj = this.lighterOverlay;
+  obj.objName = "lighterOverlay";
+  this.runningObj = obj;
+
+  const shapeCnt = 200;
+  const bgColor = "black";
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
   cnv_bg.style.width = el.style.width;
@@ -31,22 +38,31 @@ specialEffects.lighterOverlay = function(el, shapeCnt, bgColor) {
   this.lighterOverlay.drawFrm();
 };
   
-specialEffects.lighterOverlay.drawFrm = function() {
-  var w = specialEffects.lighterOverlay.w;
-  var h = specialEffects.lighterOverlay.h;
-  var ctx_bg = specialEffects.lighterOverlay.ctx_bg;
 
-  var cx = Math.random() * w;
-  var cy = Math.random() * h;
-  var r = Math.random() * ((w > h) ? (h / 7) : (w / 7));
-  var rgb = "rgba(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
+specialEffects.lighterOverlay.drawFrm = function(timeStamp) {
+  const obj = specialEffects.lighterOverlay;
+  if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
+  if ((timeStamp - obj.lastTimeStamp) > 200) {
+    obj.lastTimeStamp = timeStamp;
 
-  ctx_bg.globalCompositeOperation = 'lighter';
-  ctx_bg.beginPath();
-  ctx_bg.fillStyle = rgb;
-  ctx_bg.arc(cx, cy, r, 0, 2 * Math.PI);
-  ctx_bg.fill();	
+    var w = specialEffects.lighterOverlay.w;
+    var h = specialEffects.lighterOverlay.h;
+    var ctx_bg = specialEffects.lighterOverlay.ctx_bg;
 
-  if (--specialEffects.lighterOverlay.shapeCnt > 0)
-    setTimeout(specialEffects.lighterOverlay.drawFrm, 250);
+    var cx = Math.random() * w;
+    var cy = Math.random() * h;
+    var r = Math.random() * ((w > h) ? (h / 7) : (w / 7));
+    var rgb = "rgba(" + (Math.random() * 256) + "," + (Math.random() * 256) + "," + (Math.random() * 256) + ")";
+
+    ctx_bg.globalCompositeOperation = 'lighter';
+    ctx_bg.beginPath();
+    ctx_bg.fillStyle = rgb;
+    ctx_bg.arc(cx, cy, r, 0, 2 * Math.PI);
+    ctx_bg.fill();	
+  }
+   
+  if (specialEffects.runningObj.objName == obj.objName) {
+    if (--obj.shapeCnt > 0)  
+      requestAnimationFrame(obj.drawFrm);
+  }
 }

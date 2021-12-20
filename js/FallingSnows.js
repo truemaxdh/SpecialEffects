@@ -3,16 +3,22 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 }
 
 // snow
-function _snow(cx, cy, r, dy) {
-  this.cx = cx;
-  this.cy = cy;
-  this.r = r;
-  this.dy = dy;
+class _snow {
+  constructor(cx, cy, r, dy) {
+    this.cx = cx;
+    this.cy = cy;
+    this.r = r;
+    this.dy = dy;
+  }
 }
 
 specialEffects.fallingSnows = function(el) {
   console.log(el.style);
   
+  const obj = this.fallingSnows;
+  obj.objName = "fallingSnows";
+  this.runningObj = obj;
+
   var cnv = document.createElement("CANVAS");
   cnv.style.position = "relative";
   cnv.style.width = el.style.width;
@@ -79,5 +85,6 @@ specialEffects.fallingSnows.drawFrm = function(timeStamp) {
 
   }
 
-  requestAnimationFrame(specialEffects.fallingSnows.drawFrm);
+  if (specialEffects.runningObj.objName == obj.objName)
+    requestAnimationFrame(obj.drawFrm);
 }

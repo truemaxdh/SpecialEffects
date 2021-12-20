@@ -3,6 +3,10 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 }
 
 specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, subColor, bgColor, fwColor) {
+  const obj = this.scratchMosaic;
+  obj.objName = "scratchMosaic";
+  this.runningObj = obj;
+
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
   //cnv_bg.style.left = el.style.left;
@@ -65,6 +69,7 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
 };
   
 specialEffects.scratchMosaic.drawFrm = function() {
+  const obj = specialEffects.scratchMosaic;
   var w = specialEffects.scratchMosaic.w;
   var h = specialEffects.scratchMosaic.h;
   var ctx_bg = specialEffects.scratchMosaic.ctx_bg;
@@ -79,7 +84,8 @@ specialEffects.scratchMosaic.drawFrm = function() {
     ctx_fw.fillRect(x,y,20,1);	
   }
 
-  requestAnimationFrame(specialEffects.scratchMosaic.drawFrm);
+  if (specialEffects.runningObj.objName == obj.objName)
+    requestAnimationFrame(obj.drawFrm);
 }
 
     

@@ -5,6 +5,10 @@ if (typeof specialEffects === 'undefined' || !specialEffects) {
 specialEffects.smoke = function(el) {
   console.log(el.style);
   
+  const obj = this.smoke;
+  obj.objName = "smoke";
+  this.runningObj = obj;
+
   var cnv = document.createElement("CANVAS");
   cnv.style.position = "relative";
   cnv.style.width = el.style.width;
@@ -14,7 +18,6 @@ specialEffects.smoke = function(el) {
   cnv.height = cnv.style.height.replace("px","");
   el.appendChild(cnv);
 
-  var obj = this.smoke;
   obj.ctx = cnv.getContext("2d");
   obj.w = cnv.width;
   obj.h = cnv.height;
@@ -129,7 +132,8 @@ specialEffects.smoke = function(el) {
       obj.wind.update();
     }
     
-    requestAnimationFrame(obj.drawFrm);
+    if (specialEffects.runningObj.objName == obj.objName)
+      requestAnimationFrame(obj.drawFrm);
   }
   
   requestAnimationFrame(obj.drawFrm);

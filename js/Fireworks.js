@@ -35,6 +35,10 @@ function objFire(w, h) {
 }
 
 specialEffects.fireworks = function(el) {
+  const obj = this.fireworks;
+  obj.objName = "fireworks";
+  this.runningObj = obj;
+
   var cnv_bg = document.createElement("CANVAS");
   cnv_bg.style.position = "relative";
   cnv_bg.style.width = el.style.width;
@@ -98,5 +102,6 @@ specialEffects.fireworks.drawFrm = function() {
     obj.listChain.end.prev = newFire;
   }
 
-  requestAnimationFrame(specialEffects.fireworks.drawFrm);
+  if (specialEffects.runningObj.objName == obj.objName)
+    requestAnimationFrame(obj.drawFrm);
 }
