@@ -9,23 +9,16 @@ specialEffects.afterimage = function(el) {
   obj.objName = "afterimage";
   this.runningObj = obj;
 
-  var cnv_bg = document.createElement("CANVAS");
+  const cnv_bg = ReplaceCanvas(el);
   cnv_bg.style.position = "relative";
-  cnv_bg.style.width = el.style.width;
-  cnv_bg.style.height = el.style.height;
-  cnv_bg.id = "cnv_bg";
-  cnv_bg.width = cnv_bg.style.width.replace("px","");
-  cnv_bg.height = cnv_bg.style.height.replace("px","");
-  el.appendChild(cnv_bg);
 
-  var ctx_bg = cnv_bg.getContext("2d");
-  var w = cnv_bg.width;
-  var h = cnv_bg.height;
-
+  const w = cnv_bg.width;
+  const h = cnv_bg.height;
   this.afterimage.w = w;
   this.afterimage.h = h;
-  this.afterimage.ctx_bg = ctx_bg;
+  this.afterimage.shapeCnt = Math.random() * 50 + 50;
   
+  this.afterimage.ctx_bg = cnv_bg.getContext("2d");
   this.afterimage.cx = 0;
   this.afterimage.cy = Math.random() * h;
   this.afterimage.r = Math.random() * ((w > h) ? (h / 7) : (w / 7));

@@ -115,3 +115,48 @@ class Vector2D {
 		return Math.hypot(this.v1 - v.v1, this.v2 - v.v2);
 	}
 }
+
+/**
+ * 
+ * @param {min value} min 
+ * @param {max value} max 
+ * @param {start value} start 
+ * @param {max amplitude} maxAmp 
+ */
+function SoftRandom(min, max, start, maxAmp) {
+	this.min = min;
+	this.max = max;
+	this.val = start;
+	this.maxAmp = maxAmp;
+	this.dirDeg = 0;
+	this.ampDeg = 0;
+	this.lastVal = ()=>this.val;
+	this.nextVal = ()=>{
+		this.dirDeg += Math.random() * Math.PI * 0.25;
+		this.ampDeg += Math.random() * Math.PI * 0.1;
+		if (this.dirDeg >= (Math.PI * 2)) this.dirDeg -= Math.PI * 2;
+		if (this.ampDeg >= (Math.PI * 2)) this.dirDeg -= Math.PI * 2;
+		this.val += Math.sin(this.dirDeg) * Math.abs(Math.sin(this.ampDeg)) * this.maxAmp;
+		if (this.val < this.min) this.val = this.min;
+		if (this.val > this.max) this.val = this.max;
+		return this.val;
+	}
+}
+
+function ReplaceCanvas(el) {
+	while (el.firstChild) {
+		el.removeChild(el.firstChild);
+	}
+	let elH = document.body.clientHeight - el.offsetTop;
+    el.style.width = "100%";
+    el.style.height = elH + "px";
+
+	let canv = document.createElement("CANVAS");
+    canv.id = "cnv";
+	canv.width  = el.clientWidth;
+    canv.height  = el.clientHeight;
+	canv.style.width  = el.clientWidth + "px";
+    canv.style.height  = el.clientHeight + "px";
+    el.appendChild(canv);	
+	return canv;
+}

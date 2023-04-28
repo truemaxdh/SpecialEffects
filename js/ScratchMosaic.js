@@ -7,12 +7,8 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   obj.objName = "scratchMosaic";
   this.runningObj = obj;
 
-  var cnv_bg = document.createElement("CANVAS");
+  const cnv_bg = ReplaceCanvas(el);
   cnv_bg.style.position = "relative";
-  //cnv_bg.style.left = el.style.left;
-  //cnv_bg.style.top = el.style.top;
-  cnv_bg.style.width = el.style.width;
-  cnv_bg.style.height = el.style.height;
   cnv_bg.id = "cnv_bg";
   var _w = Number(cnv_bg.style.width.replace("px",""));
   var _h = Number(cnv_bg.style.height.replace("px",""));
@@ -21,11 +17,9 @@ specialEffects.scratchMosaic = function(el, msg, font, color, subMsg, subFont, s
   var h = _h * _scale;
   cnv_bg.width = w;
   cnv_bg.height = h;
-  el.appendChild(cnv_bg);
-
-  var cnv_fw = document.createElement("CANVAS");
+  
+  const cnv_fw = document.createElement("CANVAS");
   cnv_fw.style.position = "relative";
-  //cnv_fw.style.left = el.style.left;
   cnv_fw.style.top = "-" + el.style.height;
   cnv_fw.style.width = el.style.width;
   cnv_fw.style.height = el.style.height;
@@ -87,5 +81,3 @@ specialEffects.scratchMosaic.drawFrm = function() {
   if (specialEffects.runningObj.objName == obj.objName)
     requestAnimationFrame(obj.drawFrm);
 }
-
-    
