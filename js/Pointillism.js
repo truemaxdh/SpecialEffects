@@ -40,10 +40,10 @@ specialEffects.pointillism = function(el) {
   
   obj.drawFrm = function(timeStamp) {
     if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
-    if ((timeStamp - obj.lastTimeStamp) > 200) {
+    if ((timeStamp - obj.lastTimeStamp) > 500) {
       obj.lastTimeStamp = timeStamp;
 
-      obj.ctx.fillStyle="black";
+      obj.ctx.fillStyle="beige";
       obj.ctx.rect(0, 0, obj.w, obj.h);
       obj.ctx.fill();
       var d = Math.max(obj.w, obj.h) / obj.sliceCnt;
