@@ -9,15 +9,9 @@ specialEffects.smoke = function(el) {
   obj.objName = "smoke";
   this.runningObj = obj;
 
-  var cnv = document.createElement("CANVAS");
+  const cnv = ReplaceCanvas(el);
   cnv.style.position = "relative";
-  cnv.style.width = el.style.width;
-  cnv.style.height = el.style.height;
-  cnv.id = "cnv";
-  cnv.width = cnv.style.width.replace("px","");
-  cnv.height = cnv.style.height.replace("px","");
-  el.appendChild(cnv);
-
+  
   obj.ctx = cnv.getContext("2d");
   obj.w = cnv.width;
   obj.h = cnv.height;

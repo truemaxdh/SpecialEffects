@@ -9,23 +9,17 @@ specialEffects.tearAndPaste = function(el) {
   obj.objName = "tearAndPaste";
   this.runningObj = obj;
 
-  var cnv = document.createElement("CANVAS");
+  const cnv = ReplaceCanvas(el);
   cnv.style.position = "relative";
-  cnv.style.width = el.style.width;
-  cnv.style.height = el.style.height;
-  cnv.id = "cnv";
-  cnv.width = cnv.style.width.replace("px","");
-  cnv.height = cnv.style.height.replace("px","");
-  el.appendChild(cnv);
-
+  
   obj.ctx = cnv.getContext("2d");
   obj.w = cnv.width;
   obj.h = cnv.height;
   obj.lastTimeStamp = null;
   obj.imgOri = new Image();
-  obj.imgOri.src = "images/wallpaperbetter.jpg";
-  // obj.imgOri.crossOrigin = '';
-  // obj.imgOri.src = "https://truemaxdh.github.io/SpecialEffects/images/wallpaperbetter.jpg";
+  //obj.imgOri.src = "images/wallpaperbetter.jpg";
+  obj.imgOri.src = "https://truemaxdh.github.io/SpecialEffects/images/wallpaperbetter.jpg";
+  obj.imgOri.crossOrigin = 'Anonymous';
   obj.imgOri.onload = function() {
     var scale = Math.min(obj.w / obj.imgOri.width, obj.h / obj.imgOri.height);
     var w = obj.imgOri.width * scale;

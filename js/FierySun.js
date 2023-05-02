@@ -9,19 +9,13 @@ specialEffects.fierySun = function(el) {
   obj.objName = "fierySun";
   this.runningObj = obj;
 
-  var cnv = document.createElement("CANVAS");
+  const cnv = ReplaceCanvas(el);
   cnv.style.position = "relative";
-  cnv.style.width = el.style.width;
-  cnv.style.height = el.style.height;
-  cnv.id = "cnv";
-  cnv.width = cnv.style.width.replace("px","");
-  cnv.height = cnv.style.height.replace("px","");
-  el.appendChild(cnv);
-
+  
   this.fierySun.ctx = cnv.getContext("2d");
   this.fierySun.w = cnv.width;
-  this.fierySun.h =cnv.height;
-  this.fierySun.r = 50 + (Math.min(cnv.width, cnv.height) - 50) * Math.random();
+  this.fierySun.h = cnv.height;
+  this.fierySun.r = Math.min(cnv.width, cnv.height) * (0.2 + Math.random() * 0.8);
   this.fierySun.cx = cnv.width * Math.random();
   this.fierySun.cy = cnv.height * Math.random();
   this.fierySun.div = Math.floor(12 + 58 * Math.random()) * 2;

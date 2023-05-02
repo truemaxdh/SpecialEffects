@@ -21,23 +21,20 @@ specialEffects.aurora = function(el) {
   obj.objName = "aurora";
   this.runningObj = obj;
 
-  var cnv = document.createElement("CANVAS");
+  const cnv = ReplaceCanvas(el);
   cnv.style.position = "relative";
-  cnv.style.width = el.style.width;
-  cnv.style.height = el.style.height;
-  cnv.id = "cnv";
-  cnv.width = cnv.style.width.replace("px","");
-  cnv.height = cnv.style.height.replace("px","");
-  el.appendChild(cnv);
-
+  
+  const w = cnv.width;
+  const h = cnv.height;
+  this.aurora.w = w;
+  this.aurora.h = h;
+  
   this.aurora.ctx = cnv.getContext("2d");
-  this.aurora.w = cnv.width;
-  this.aurora.h =cnv.height;
   this.aurora.bubbles = [];
   this.aurora.lastTimeStamp = null;
   
-  var cnt = 3 + Math.random() * 10;
-  for (var i = 0; i < cnt; i++) {
+  const cnt = 3 + Math.random() * 10;
+  for (let i = 0; i < cnt; i++) {
     this.aurora.bubbles.push( 
       new _bubble(
         Math.random() * cnv.width, 
@@ -56,7 +53,7 @@ specialEffects.aurora = function(el) {
 }
 
 specialEffects.aurora.drawFrm = function(timeStamp) {
-  var obj = specialEffects.aurora
+  const obj = specialEffects.aurora
   if (!obj.lastTimeStamp) obj.lastTimeStamp = timeStamp;
   if ((timeStamp - obj.lastTimeStamp) > 30) {
     obj.lastTimeStamp = timeStamp;
@@ -64,7 +61,6 @@ specialEffects.aurora.drawFrm = function(timeStamp) {
       var b = obj.bubbles[i];
 
       // draw
-      //ctx.globalCompositeOperation = (Math.random() < 0.998) ? "saturation" : "source-over";
       obj.ctx.globalCompositeOperation = b.gco;
       if (b.gco == "source-over")
         obj.ctx.globalAlpha = 0.2;
