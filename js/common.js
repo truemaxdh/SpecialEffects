@@ -143,6 +143,11 @@ function SoftRandom(min, max, start, maxAmp) {
 	}
 }
 
+/**
+ * 
+ * @param {parent element of canvas} el 
+ * @returns new canvas
+ */
 function ReplaceCanvas(el) {
 	while (el.firstChild) {
 		el.removeChild(el.firstChild);
