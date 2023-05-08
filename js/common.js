@@ -170,3 +170,23 @@ function ReplaceCanvas(el) {
 	setTimeout(scrollTo, 1, 0, el.offsetTop);
 	return canv;
 }
+
+
+function run(runName) {
+        el.innerHTML = "";
+        if (runName == "scratchMosaic") {
+          specialEffects.scratchMosaic(
+            el,
+            "Special Effects Sample",
+            "20px Arial",
+            "darkorange",
+            "Scratch Mosaic",
+            "15px Arial",
+            "darkorange",
+            "black",
+            "lightskyblue"
+          );
+        } else {
+          eval("specialEffects." + runName + "(el);" );
+        }
+}
