@@ -152,16 +152,19 @@ function ReplaceCanvas(el) {
 	while (el.firstChild) {
 		el.removeChild(el.firstChild);
 	}
-	let elH = document.body.clientHeight - el.offsetTop;
-    el.style.width = "100%";
-    el.style.height = elH + "px";
+	//let elH = document.body.clientHeight - el.offsetTop;
+	let elH = document.body.clientHeight;
+	el.style.width = "100%";
+	el.style.height = elH + "px";
 
 	let canv = document.createElement("CANVAS");
-    canv.id = "cnv";
+	canv.id = "cnv";
 	canv.width  = el.clientWidth;
-    canv.height  = el.clientHeight;
+	canv.height  = el.clientHeight;
 	canv.style.width  = el.clientWidth + "px";
-    canv.style.height  = el.clientHeight + "px";
-    el.appendChild(canv);	
+	canv.style.height  = el.clientHeight + "px";
+	el.appendChild(canv);
+	
+	window.scrollTo(0, el.offsetTop);
 	return canv;
 }
