@@ -33,25 +33,6 @@
     <script src="js/SilkThread.js"></script>
     
     <script>
-      function run(runName) {
-        el.innerHTML = "";
-        if (runName == "scratchMosaic") {
-          specialEffects.scratchMosaic(
-            el,
-            "Special Effects Sample",
-            "20px Arial",
-            "darkorange",
-            "Scratch Mosaic",
-            "15px Arial",
-            "darkorange",
-            "black",
-            "lightskyblue"
-          );
-        } else {
-          eval("specialEffects." + runName + "(el);" );
-        }
-      }
-      
       let el;
       const onLoadEx = function() {
         el = document.getElementById("board");
