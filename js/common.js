@@ -166,5 +166,6 @@ function ReplaceCanvas(el) {
 	el.appendChild(canv);
 	
 	window.scrollTo(0, el.offsetTop);
+	setTimeout(scrollTo,0,0,1);
 	return canv;
 }
