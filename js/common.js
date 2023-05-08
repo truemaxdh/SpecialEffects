@@ -152,6 +152,7 @@ function ReplaceCanvas(el) {
 	while (el.firstChild) {
 		el.removeChild(el.firstChild);
 	}
+	window.scrollTo(0, 1);
 	//let elH = document.body.clientHeight - el.offsetTop;
 	let elH = document.body.clientHeight;
 	el.style.width = "100%";
@@ -165,7 +166,8 @@ function ReplaceCanvas(el) {
 	canv.style.height  = el.clientHeight + "px";
 	el.appendChild(canv);
 	
-	window.scrollTo(0, el.offsetTop);
-	setTimeout(scrollTo,0,0,1);
+	//window.scrollTo(0, el.offsetTop);
+	//setTimeout(scrollTo,0,0,1);
+	setTimeout(scrollTo, 0, 0, el.offsetTop);
 	return canv;
 }
